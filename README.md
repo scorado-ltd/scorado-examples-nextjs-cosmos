@@ -41,11 +41,10 @@ React Cosmos typically runs inside the main app but on a separate port, requirin
 ## Running Two Projects on Vercel
 To run both the app and React Cosmos style guide on Vercel, you can create two projects—one for your app and the other for React Cosmos. Connect them to the same codebase, with the main app utilizing the default Next.js settings. For the `React-Cosmos` Vercel project to work correctly, customize the build settings as follows:
 ```
-Build command: cd .cosmos && npm run cosmos-export && npm run build
+Build command: cd .cosmos && npm run cosmos-export && mv ./public/cosmos-styleguide ../public && npm run build
 Output directory: .cosmos/.next
 Toggle on the option "Include source files outside of the Root Directory"
 ```
-You also might need to update `.cosmos/cosmos.config.json` and set `exportPath` to `"../public/cosmos-export"`. This will ensure that `vercel` can pick up `cosmos gui page` from the public folder.
 
 This configuration allows both the main app and React Cosmos to share the same codebase while having separate deployments.
 
