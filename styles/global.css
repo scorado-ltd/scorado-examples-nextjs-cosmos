@@ -1,0 +1,182 @@
+:root {
+  --maxMenu-width: 288px;
+  --primaryMenu-openWidth: var(--maxMenu-width);
+  --primaryMenu-closedWidth: 56px;
+  --primaryMenu-width: var(--primaryMenu-closedWidth);
+  --secondaryMenu-width: 232px;
+  --secondaryMenu-openPositionX: 0px;
+  --secondaryMenu-closedPositionX: -232px;
+  --secondaryMenu-positionX: var(--secondaryMenu-closedPositionX);
+  --secondaryMenu-openPositionY: 0;
+  --secondaryMenu-closedPositionY: 100%;
+  --secondaryMenu-positionY: var(--secondaryMenu-closedPositionY);
+  --menu-width: min(var(--maxMenu-width), calc(var(--primaryMenu-width) + var(--secondaryMenu-width) + var(--secondaryMenu-positionX)));
+  --toast-translateY: var(--toast-slideDown);
+  --toast-slideDown: 400px;
+  --toast-slideUp: 0px;
+
+  --theme-primaryColour-light: #43FFB1;
+  --theme-primaryColour-dark: #FC0A6A;
+  --theme-supportColour1: #FCF10A;
+  --theme-supportColour2: #1AE6FF;
+  --theme-supportColour3: #9604FF;
+  --theme-supportColour4: #f1f1f1;
+  --theme-supportColour5: #1d1d27;
+
+  --theme-danger: #F24726;
+
+  --theme-text-colour: #9B9B9B;
+  --theme-heading-colour: #F6F6F6;
+  --theme-error-colour: #ff9c55;
+
+  --theme-background-colour-dark: #242430;
+  --theme-background-colour-darker: #161620;
+  --theme-background-colour-darkest: #0F0F19;
+
+  --theme-community-colour: var(--theme-supportColour3);
+  --theme-event-colour: var(--theme-supportColour2);
+  --theme-discipline-colour: var(--theme-supportColour2);
+
+  --scrollbar-width: 10px;
+  --scrollbar-track-colour: rgba(255, 255, 255, 0);
+  --scrollbar-thumb-colour: #717171;
+  --scrollbar-thumb-colour-hover: #d6d6d6;
+
+
+  --container-padding__h: 48px;
+
+
+
+  /* NEW COLOR VARIABLES */
+  --theme-primaryColor: #43FFB1;
+  --theme-secondaryColor: #FC0A6A;
+  --theme-tertiaryColor: #1AE6FF;
+  --theme-dangerColor: #F24726;
+  --theme-warningColor: #FCF10A;
+  --theme-infoColor: #1aa0ff;
+  --theme-successColor: #6dff04;
+  --theme-lightColor: #f1f1f1;
+  --theme-grayColor: #bfbfbf;
+  --theme-darkColor: #242430;
+  --theme-darkerColor: #161620;
+  --theme-darkestColor: #0F0F19;
+}
+
+@media screen and (max-width: 860px) {
+  :root {
+    --primaryMenu-openWidth: 0px;
+    --primaryMenu-closedWidth: 0px;
+    --secondaryMenu-openPositionX: calc(var(--maxMenu-width) * -1);
+    --secondaryMenu-closedPositionX: calc(var(--maxMenu-width) * -1);
+    --menu-width: 0px;
+    --container-padding__h: 16px;
+
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans";
+  background-color: #242430;
+  color: #FFFFFF;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit";
+  margin: 0;
+  margin-bottom: 8px;
+  color: var(--theme-heading-colour);
+}
+
+h1 {
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+a {
+  text-decoration-color: var(--theme-primaryColour-light);
+  color: #FFFFFF;
+}
+
+a:hover {
+  background-color: var(--theme-primaryColour-light);
+  color: #000000;
+}
+
+p {
+  font-size: 14px;
+  color: var(--theme-text-colour);
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+input {
+  font-family: 'Open Sans';
+}
+
+
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+  background-color: transparent;
+  width: var(--scrollbar-width);
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-colour);
+}
+
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-colour);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-colour-hover);
+}
+
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+.body--no-scroll {
+  overflow-y: hidden;
+}
+
+.body--has-scrollbar {
+  margin-right: var(--scrollbar-width);
+}
+
+
+input:disabled,
+button:disabled {
+  cursor: not-allowed;
+}

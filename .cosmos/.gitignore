@@ -11,7 +11,6 @@
 # next.js
 /.next/
 /out/
-/public/cosmos-export/
 
 # production
 /build
@@ -37,3 +36,4 @@ next-env.d.ts
 
 # cosmos
 cosmos.imports.ts
+cosmos-export

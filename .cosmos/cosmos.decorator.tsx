@@ -1,15 +1,18 @@
-"use client"
+'use client'
 
-import "../src/app/globals.css";
+import "@fontsource/open-sans"
+import "@fontsource/outfit"
+import "./styles/global.css";
+import "../styles/global.css";
 
 import { PropsWithChildren } from "react";
 
 const LayoutFixture: React.FC<PropsWithChildren> = ({ children }) => {
-
-    return <div>
-        {children}
-    </div >
-
+    return (
+        <div>
+            {children}
+        </div >
+    )
 }
 
 export default LayoutFixture;
