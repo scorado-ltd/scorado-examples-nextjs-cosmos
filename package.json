@@ -6,8 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cosmos": "cosmos --expose-imports",
-    "cosmos-export": "cosmos-export --expose-imports"
+    "cosmos-vercel": "bash ./cosmos-vercel.sh"
   },
   "dependencies": {
     "next": "13.4.1",
