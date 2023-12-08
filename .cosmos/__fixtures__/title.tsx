@@ -1,7 +1,7 @@
 'use client'
 
 import { useSelect, useValue } from "react-cosmos/client";
-import Title from "../../components/title";
+import Title from "~webapp/components/title";
 
 const TitleFixture = () => {
     const [text] = useValue("text", { defaultValue: "Title" })

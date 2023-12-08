@@ -1,8 +1,7 @@
 'use client';
 
-import Button from '../../components/Button';
-import Title from '../../components/Title';
-import Info from '../../components/info';
+import Title from '../components/title';
+import Info from '../components/info';
 import styles from './page.module.css'
 
 

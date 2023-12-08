@@ -5,17 +5,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cosmos-vercel": "bash ./cosmos-vercel.sh"
   },
   "dependencies": {
-    "@types/node": "20.4.5",
-    "@types/react": "18.2.17",
-    "@types/react-dom": "18.2.7",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "@fontsource/open-sans": "^5.0.5",
+    "@fontsource/outfit": "^5.0.5",
+    "next": "13.4.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.1.0",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "eslint": "^8.45.0",
+    "typescript": "5.0.4"
   }
 }
