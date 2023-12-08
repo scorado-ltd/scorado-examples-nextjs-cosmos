@@ -6,14 +6,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cosmos-vercel": "bash ./cosmos-vercel.sh"
+    "cosmos-vercel": "bash ./.cosmos/cosmos-vercel.sh"
   },
   "dependencies": {
     "@fontsource/open-sans": "^5.0.5",
     "@fontsource/outfit": "^5.0.5",
-    "next": "13.4.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "eslint-config-next": "^14.0.4",
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "20.1.0",
