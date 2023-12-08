@@ -1,4 +1,10 @@
-# React-Cosmos with Next.js
+# React Cosmos with Next.js
+
+|Framework|Version|
+|-|-|
+|Node.js|20.x|
+|Next.js|14.x|
+|React Cosmos|6.x|
 
 ## Introduction
 
@@ -21,7 +27,6 @@ npm run dev
 
 The application will run in development mode on port 3000. For additional information on building or deploying the app, please refer to the Next.js documentation: https://nextjs.org
 
-
 ### Configuring the style guide (React Cosmos)
 To set up the style guide, navigate to the .cosmos folder and run the following commands:
 
@@ -39,12 +44,13 @@ React Cosmos will generate static pages for all the fixtures and create the app,
 React Cosmos typically runs inside the main app but on a separate port, requiring the app to be running simultaneously. However, this project presents a different approach by allowing React Cosmos to function as an independent app while still having access to the main app's components. This separation ensures that the main app and React Cosmos remain distinct entities.
 
 ## Running Two Projects on Vercel
-To run both the app and React Cosmos style guide on Vercel, you can create two projects—one for your app and the other for React Cosmos. Connect them to the same codebase, with the main app utilizing the default Next.js settings. For the `React-Cosmos` Vercel project to work correctly, customize the build settings as follows:
-```
-Build command: cd .cosmos && npm run cosmos-export && mv ./public/cosmos-styleguide ../public && npm run build
-Output directory: .cosmos/.next
-Toggle on the option "Include source files outside of the Root Directory"
-```
+To run both the app and React Cosmos style guide on Vercel, you can create two projects; one for your app and the other for React Cosmos. Connect them to the same codebase, with the main app utilizing the default Next.js settings. For the `React-Cosmos` Vercel project to work correctly, using this repository, customize the build settings as follows:
+
+|Setting|Value|
+|-|-|
+|Build Command|`npm run cosmos-vercel`|
+|Output Directory|`.cosmos/.next`|
+|Root Directory|"Include source files outside of the Root Directory" - `Enabled`|
 
 This configuration allows both the main app and React Cosmos to share the same codebase while having separate deployments.
 
@@ -54,6 +60,7 @@ If you wish to export React Cosmos as a static project and run it independently 
 1. Edit the file `.cosmos/next.config.js`
 2. Remove the `rewrites` configuration
 3. Add `output: "export"`
+
 With these settings in place, running the following commands inside the `.cosmos` folder will generate a static project within a new folder named `out`:
 
 ```
@@ -65,7 +72,9 @@ npm run build
 You can now host the contents of the out folder on a separate server or use the commands 
 ```
 npx http-server out -p 8080 
-or
+```
+OR
+```
 npx serve out -p 8080
 ```
 Or you can serve the files with any other server of your choice.
