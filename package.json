@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cosmos-vercel": "bash ./cosmos-vercel.sh"
+    "cosmos-vercel": "bash ./.cosmos/cosmos-vercel.sh"
   },
   "dependencies": {
     "@fontsource/open-sans": "^5.0.5",
