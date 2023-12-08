@@ -12,12 +12,13 @@
   "dependencies": {
     "@fontsource/open-sans": "^5.0.5",
     "@fontsource/outfit": "^5.0.5",
-    "next": "13.4.1",
-    "react": "18.2.0",
+    "eslint-config-next": "^14.0.4",
+    "next": "^14.0.4",
+    "react": "^18.2.0",
     "react-cosmos": "^6.0.0-beta.6",
     "react-cosmos-next": "^6.0.0-beta.6",
     "react-cosmos-plugin-open-fixture": "^6.0.0-alpha.21",
-    "react-dom": "18.2.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "20.1.0",

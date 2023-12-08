@@ -1,5 +1,3 @@
-'use client'
-
 import { nextCosmosPage, nextCosmosStaticParams } from 'react-cosmos-next';
 import * as cosmosImports from '../../../../cosmos.imports';
 
