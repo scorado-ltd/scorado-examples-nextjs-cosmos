@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import styles from './button.module.scss';
 import { ComponentThemes } from './theme';
 
-const getButtonStyleClass = (buttonStyle: ButtonStyles, shape?: ButtonShape): string => {
+function getButtonStyleClass(buttonStyle: ButtonStyles, shape?: ButtonShape): string {
     switch (buttonStyle) {
         case ButtonStyles.Primary:
             return shape === ButtonShape.Circle ? styles.Button___circlePrimary : styles.Button___primary;
@@ -14,7 +14,7 @@ const getButtonStyleClass = (buttonStyle: ButtonStyles, shape?: ButtonShape): st
             return shape === ButtonShape.Circle ? styles.Button___circlePrimary : styles.Button___primary;
     }
 }
-const getButtonSizeClass = (buttonSize: ButtonSizes | undefined, shape?: ButtonShape): string | null => {
+function getButtonSizeClass(buttonSize: ButtonSizes | undefined, shape?: ButtonShape): string | null {
     switch (buttonSize) {
         case ButtonSizes.Small:
             return shape === ButtonShape.Circle ? styles.Button___circleSmall : styles.Button___small;
@@ -22,7 +22,7 @@ const getButtonSizeClass = (buttonSize: ButtonSizes | undefined, shape?: ButtonS
             return shape === ButtonShape.Circle ? styles.Button___circleNormal : null;
     }
 }
-const getButtonThemeClass = (buttonTheme: ComponentThemes | undefined, shape?: ButtonShape): string | null => {
+function getButtonThemeClass(buttonTheme: ComponentThemes | undefined, shape?: ButtonShape): string | null {
     switch (buttonTheme) {
         case ComponentThemes.Support1:
             return shape === ButtonShape.Circle ? styles.Button___circleSupport1 : styles.Button___support1;
@@ -36,7 +36,7 @@ const getButtonThemeClass = (buttonTheme: ComponentThemes | undefined, shape?: B
             return null;
     }
 }
-const buildButtonClasses = (themedButton: ThemedButtonProps): string => {
+function buildButtonClasses(themedButton: ThemedButtonProps): string {
 
     const buttonStyleClass = getButtonStyleClass(themedButton.buttonStyle, themedButton.shape);
     let classes = buttonStyleClass;
@@ -95,6 +95,7 @@ interface BaseButtonProps {
     fullWidth?: boolean,
     size?: ButtonSizes,
     shape?: ButtonShape,
+    icon?: JSX.Element
 }
 interface ThemedButtonProps extends BaseButtonProps {
     buttonStyle: ButtonStyles
@@ -106,29 +107,36 @@ export interface ButtonElementProps extends BaseButtonProps, React.ButtonHTMLAtt
 interface ButtonProps extends ThemedButtonProps, ButtonElementProps {
 
 }
-const Button: React.FC<ButtonProps> = ({ buttonStyle, componentTheme, size, shape, fullWidth, children, ...props }) => {
+export function Button({ buttonStyle, componentTheme, size, shape, fullWidth, icon, children, ...props }: ButtonProps) {
     let classes = buildButtonClasses({ buttonStyle: buttonStyle, componentTheme: componentTheme, size: size, fullWidth: fullWidth, shape: shape });
     if (props.className) classes += ' ' + props.className;
 
     return (
-        <button {...props} className={classes}>{children}</button>
+        <button {...props} className={classes}>
+            {children}
+            {icon ? 
+                <div className={styles.Button___icon}>{icon}</div>
+                :
+                null
+            }
+        </button>
     )
 }
 
 
-export const PrimaryButton: React.FC<ButtonElementProps> = (button) => {
+export function PrimaryButton(button: ButtonElementProps) {
     return <Button buttonStyle={ButtonStyles.Primary} {...button}>{button.children}</Button>
 }
-export const SecondaryButton: React.FC<ButtonElementProps> = (button) => {
+export function SecondaryButton(button: ButtonElementProps) {
     return <Button buttonStyle={ButtonStyles.Secondary} {...button}>{button.children}</Button>
 }
-export const TertiaryButton: React.FC<ButtonElementProps> = (button) => {
+export function TertiaryButton(button: ButtonElementProps) {
     return <Button buttonStyle={ButtonStyles.Tertiary} {...button}>{button.children}</Button>
 }
 interface ThemedButtonsProps extends ButtonElementProps {
     componentTheme?: ComponentThemes
 }
-export const ThemedButton: React.FC<ThemedButtonsProps> = (button) => {
+export function ThemedButton(button: ThemedButtonsProps) {
     return <Button buttonStyle={ButtonStyles.Primary} {...button}>{button.children}</Button>
 }
 

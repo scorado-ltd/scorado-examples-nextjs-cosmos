@@ -99,9 +99,9 @@
     @extend .Button___primary;
     border: 2px solid var(--theme-danger);
     background-color: transparent;
-    color:var(--theme-danger);
+    color: var(--theme-danger);
     align-items: center;
-    padding:4px;
+    padding: 4px;
 
 }
 
@@ -111,6 +111,12 @@
     padding: 4px 8px 3px 8px;
     border: 1px solid;
     min-width: 0;
+
+    .Button___icon {
+        height: 16px;
+        width: 16px;
+        margin-left: 8px;
+    }
 }
 
 .Button___tertiary.Button___small {
@@ -147,6 +153,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .Button___icon {
+        display: none;
+    }
 
     button {
         padding: 0;
@@ -217,8 +227,14 @@
 .Button___circleDanger {
     @extend .Button___circlePrimary;
     border: 1px solid var(--theme-danger);
-    color:var(--theme-danger);
+    color: var(--theme-danger);
     background-color: transparent;
+}
+
+.Button___icon {
+    height: 18px;
+    width: 18px;
+    margin-left: 10px;
 }
 
 .Button___fullWidth {
