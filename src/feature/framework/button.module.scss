@@ -1,0 +1,226 @@
+.ButtonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ButtonsLeftContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.ButtonsRightContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.Button {
+    border: 0;
+    cursor: pointer;
+    font-family: 'Outfit';
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 120px;
+}
+
+.Button:hover {
+    background-color: transparent;
+}
+
+.Button___primary {
+    @extend .Button;
+    border-radius: 4px;
+    padding: 11px 18px;
+    background-color: var(--theme-primaryColour-light);
+    color: #000000;
+}
+
+.Button___primary:hover {
+    background-color: #FFFFFF;
+}
+
+.Button___secondary {
+    @extend .Button___primary;
+    padding: 9px 18px;
+    border: 2px solid;
+    border-color: #FFFFFF;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.Button___secondary:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.Button___tertiary {
+    @extend .Button;
+    padding: 9px 18px;
+    border: 2px solid;
+    border-color: transparent;
+    font-weight: 500;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.Button___tertiary:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-decoration-color: #FFFFFF;
+}
+
+.Button___support1 {
+    @extend .Button___primary;
+    background-color: var(--theme-supportColour1);
+}
+
+.Button___support2 {
+    @extend .Button___primary;
+    background-color: var(--theme-supportColour2);
+}
+
+.Button___support3 {
+    @extend .Button___primary;
+    background-color: var(--theme-supportColour3);
+}
+
+
+.Button___danger {
+    @extend .Button___primary;
+    border: 2px solid var(--theme-danger);
+    background-color: transparent;
+    color:var(--theme-danger);
+    align-items: center;
+    padding:4px;
+
+}
+
+.Button___small {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px 8px 3px 8px;
+    border: 1px solid;
+    min-width: 0;
+}
+
+.Button___tertiary.Button___small {
+    border: 0;
+}
+
+
+.Button___circleSmall {
+    max-width: 25px;
+    max-height: 25px;
+    font-size: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+    border: 1px solid transparent;
+
+    button {
+        padding: 0;
+    }
+}
+
+.Button___circleNormal {
+    font-weight: 600;
+}
+
+.Button___circle {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        padding: 0;
+    }
+}
+
+.Button___circle:hover {
+    background-color: transparent;
+}
+
+
+
+.Button___circlePrimary {
+    @extend .Button___circle;
+    display: flex;
+    padding: 2px;
+    background-color: var(--theme-primaryColour-light);
+    color: #000000;
+}
+
+.Button___circlePrimary:hover {
+    background-color: #FFFFFF;
+}
+
+.Button___circleSecondary {
+    @extend .Button___circlePrimary;
+    border: 2px solid var(--theme-supportColour4);
+    color: var(--theme-supportColour4);
+    background-color: transparent;
+
+}
+
+.Button___circleSecondary:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.Button___circleTertiary {
+    @extend .Button___circle;
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid transparent;
+
+}
+
+.Button___circleTertiary:hover {
+    color: #FFFFFF;
+    border: 2px solid var(--theme-supportColour4);
+
+}
+
+
+.Button___circleSupport1 {
+    @extend .Button___circlePrimary;
+    background-color: var(--theme-supportColour1);
+}
+
+.Button___circleSupport2 {
+    @extend .Button___circlePrimary;
+    background-color: var(--theme-supportColour2);
+}
+
+.Button___circleSupport3 {
+    @extend .Button___circlePrimary;
+    background-color: var(--theme-supportColour3);
+}
+
+.Button___circleDanger {
+    @extend .Button___circlePrimary;
+    border: 1px solid var(--theme-danger);
+    color:var(--theme-danger);
+    background-color: transparent;
+}
+
+.Button___fullWidth {
+    width: 100%;
+}
