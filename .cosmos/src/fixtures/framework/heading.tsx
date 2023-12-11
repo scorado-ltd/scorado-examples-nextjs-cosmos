@@ -15,8 +15,3 @@ export function Heading2Fixture() {
 
     return <Heading2>{text}</Heading2>
 }
-
-export default {
-    'Heading 1': <Heading1Fixture />,
-    "Heading 2": <Heading2Fixture />
-};

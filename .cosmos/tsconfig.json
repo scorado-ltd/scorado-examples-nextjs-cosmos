@@ -27,6 +27,9 @@
       "~/*": [
         "./src/*"
       ],
+      "~fixtures/*": [
+        "./src/fixtures/*"
+      ],
       "~webapp/*": [
         "../src/*"
       ],
