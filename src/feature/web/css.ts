@@ -1,0 +1,1 @@
+export const constructClasses = (classes: (string | null)[]) => classes.filter(Boolean).join(' ');

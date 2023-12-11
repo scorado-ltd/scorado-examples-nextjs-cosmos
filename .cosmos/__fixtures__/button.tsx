@@ -1,8 +1,8 @@
 'use client'
 
 import { useSelect, useValue } from "react-cosmos/client";
-import Button, { ButtonType } from "~webapp/components/button";
-import { enumToArray, stringToEnum } from "~webapp/lib/enums/conversion";
+import { enumToArray, stringToEnum } from "~webapp/feature/core/enum/conversion";
+import Button, { ButtonType } from "~webapp/feature/test/button";
 
 const buttonTypeOptions = enumToArray(ButtonType);
 

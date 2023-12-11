@@ -1,0 +1,15 @@
+@import 'base.mixin';
+
+.Heading1 {
+    text-align: center;
+    margin: 0;
+
+    &___hasThemedBorder {
+        @include themedBorder;
+    }
+}
+
+.Heading2 {
+    text-align: center;
+    margin: 0;
+}
