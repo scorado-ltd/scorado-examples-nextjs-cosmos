@@ -1,82 +1,7 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
+import { constructClasses } from '~f/web/css';
 import styles from './button.module.scss';
 import { ComponentThemes } from './theme';
-
-function getButtonStyleClass(buttonStyle: ButtonStyles, shape?: ButtonShape): string {
-    switch (buttonStyle) {
-        case ButtonStyles.Primary:
-            return shape === ButtonShape.Circle ? styles.Button___circlePrimary : styles.Button___primary;
-        case ButtonStyles.Secondary:
-            return shape === ButtonShape.Circle ? styles.Button___circleSecondary : styles.Button___secondary;
-        case ButtonStyles.Tertiary:
-            return shape === ButtonShape.Circle ? styles.Button___circleTertiary : styles.Button___tertiary;
-        default:
-            return shape === ButtonShape.Circle ? styles.Button___circlePrimary : styles.Button___primary;
-    }
-}
-function getButtonSizeClass(buttonSize: ButtonSizes | undefined, shape?: ButtonShape): string | null {
-    switch (buttonSize) {
-        case ButtonSizes.Small:
-            return shape === ButtonShape.Circle ? styles.Button___circleSmall : styles.Button___small;
-        default:
-            return shape === ButtonShape.Circle ? styles.Button___circleNormal : null;
-    }
-}
-function getButtonThemeClass(buttonTheme: ComponentThemes | undefined, shape?: ButtonShape): string | null {
-    switch (buttonTheme) {
-        case ComponentThemes.Support1:
-            return shape === ButtonShape.Circle ? styles.Button___circleSupport1 : styles.Button___support1;
-        case ComponentThemes.Support2:
-            return shape === ButtonShape.Circle ? styles.Button___circleSupport2 : styles.Button___support2;
-        case ComponentThemes.Support3:
-            return shape === ButtonShape.Circle ? styles.Button___circleSupport3 : styles.Button___support3;
-        case ComponentThemes.Danger:
-            return shape === ButtonShape.Circle ? styles.Button___circleDanger : styles.Button___danger;
-        default:
-            return null;
-    }
-}
-function buildButtonClasses(themedButton: ThemedButtonProps): string {
-
-    const buttonStyleClass = getButtonStyleClass(themedButton.buttonStyle, themedButton.shape);
-    let classes = buttonStyleClass;
-
-    const buttonSizeClass = getButtonSizeClass(themedButton.size, themedButton.shape);
-    if (buttonSizeClass) classes += ' ' + buttonSizeClass;
-
-    const buttonThemeClass = getButtonThemeClass(themedButton.componentTheme, themedButton.shape);
-    if (buttonThemeClass) classes += ' ' + buttonThemeClass;
-
-
-    if (themedButton.fullWidth) classes += ' ' + styles.Button___fullWidth;
-
-    return classes;
-}
-
-interface ButtonsContainerProps extends PropsWithChildren {
-    className?: string
-}
-export const ButtonsContainer: React.FC<ButtonsContainerProps> = ({ children, className }) => {
-    return (
-        <div className={`${styles.ButtonsContainer} ${className}`}>
-            {children}
-        </div>
-    )
-}
-export function ButtonsLeftContainer({ children } : PropsWithChildren) {
-    return (
-        <div className={styles.ButtonsLeftContainer}>
-            {children}
-        </div>
-    )
-}
-export function ButtonsRightContainer({ children } : PropsWithChildren) {
-    return (
-        <div className={styles.ButtonsRightContainer}>
-            {children}
-        </div>
-    )
-}
 
 export enum ButtonSizes {
     Normal,
@@ -89,8 +14,75 @@ export enum ButtonStyles {
 }
 
 export enum ButtonShape {
-    Circle, Square
+    Circle,
+    Square
 }
+
+function getButtonShapeClass(shape: ButtonShape): string {
+    switch(shape) {
+        case ButtonShape.Circle:
+            return styles.Button___circle;
+        case ButtonShape.Square:
+        default:
+            return styles.Button___rectangle;
+    }
+}
+function getButtonStyleClass(buttonStyle: ButtonStyles): string {
+    switch (buttonStyle) {
+        case ButtonStyles.Secondary:
+            return styles.Button___secondary;
+        case ButtonStyles.Tertiary:
+            return styles.Button___tertiary;
+        case ButtonStyles.Primary:
+        default:
+            return styles.Button___primary;
+    }
+}
+function getButtonSizeClass(buttonSize: ButtonSizes): string | null {
+    switch (buttonSize) {
+        case ButtonSizes.Small:
+            return styles.Button___small;
+        default:
+            return null;
+    }
+}
+function getButtonThemeClass(buttonTheme: ComponentThemes): string | null {
+    switch (buttonTheme) {
+        case ComponentThemes.Support1:
+            return styles.Button___support1;
+        case ComponentThemes.Support2:
+            return styles.Button___support2;
+        case ComponentThemes.Support3:
+            return styles.Button___support3;
+        case ComponentThemes.Danger:
+            return styles.Button___danger;
+        default:
+            return null;
+    }
+}
+function buildButtonClasses(themedButton: ThemedButtonProps): string {
+    let classes = [styles.Button];
+
+    const buttonShape = themedButton.shape === undefined ? ButtonShape.Square : themedButton.shape;
+    const buttonShapeClass = getButtonShapeClass(buttonShape);
+    classes.push(buttonShapeClass);
+
+    const buttonStyleClass = getButtonStyleClass(themedButton.buttonStyle);
+    classes.push(buttonStyleClass);
+
+    const buttonSizeClass = getButtonSizeClass(themedButton.size || ButtonSizes.Normal);
+    if (buttonSizeClass) classes.push(buttonSizeClass);
+
+    if (themedButton.componentTheme !== undefined) {
+        const buttonThemeClass = getButtonThemeClass(themedButton.componentTheme);
+        if (buttonThemeClass) classes.push(buttonThemeClass);
+    }
+
+    if (themedButton.fullWidth) classes.push(styles.Button___fullWidth);
+
+    return constructClasses(classes);
+}
+
 interface BaseButtonProps {
     fullWidth?: boolean,
     size?: ButtonSizes,
