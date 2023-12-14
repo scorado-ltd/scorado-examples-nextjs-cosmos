@@ -75,16 +75,24 @@
 }
 
 * {
-  box-sizing: border-box;
-}
-
-html,
-body {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+html, body, div, li, ul, a, span, input, p {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
   font-family: "Open Sans";
   background-color: #242430;
   color: #FFFFFF;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 h1,
@@ -131,48 +139,13 @@ a:hover {
 
 p {
   font-size: 14px;
-  color: var(--theme-text-colour);
+  //color: var(--theme-text-colour);
   margin: 0;
   margin-bottom: 24px;
 }
 
 input {
   font-family: 'Open Sans';
-}
-
-
-/* Custom Scrollbar */
-body::-webkit-scrollbar {
-  background-color: transparent;
-  width: var(--scrollbar-width);
-}
-
-body::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track-colour);
-}
-
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb-colour);
-  border-radius: 6px;
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-thumb-colour-hover);
-}
-
-body::-webkit-scrollbar-button {
-  display: none;
-}
-
-.body--no-scroll {
-  overflow-y: hidden;
-}
-
-.body--has-scrollbar {
-  margin-right: var(--scrollbar-width);
 }
 
 
