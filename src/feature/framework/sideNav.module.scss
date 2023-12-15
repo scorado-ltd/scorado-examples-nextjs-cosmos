@@ -1,0 +1,55 @@
+.SideNav {
+    width: 340px; // Expanded - convert to CSS variable
+    height: 100%;
+    flex: 0 0 auto;
+
+    &__layout {
+        display: block;
+        position: relative;
+        height: 100%;
+
+        z-index: 5;
+        transform: translateZ(0);
+        width: 100%;
+    }
+
+    &__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        // Temporary
+        background-color: burlywood;
+    }
+
+    &__top {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+
+        height: 71px;
+
+        background-color: chocolate;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: unset;
+
+        background-color: crimson;
+    }
+
+    &__bottom {
+        flex: 0 0 auto;
+        min-height: 74px;
+        text-align: center;
+
+        background-color: forestgreen;
+    }
+}
