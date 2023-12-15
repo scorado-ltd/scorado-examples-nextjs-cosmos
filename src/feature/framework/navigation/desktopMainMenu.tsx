@@ -1,4 +1,6 @@
 import styles from './desktopMainMenu.module.scss';
+import { MainMenuToggle } from './desktopMainMenuClient';
+import { MainMenuProvider } from './desktopMainMenuContext';
 
 export default function DesktopMainMenu() {
     return (
@@ -46,7 +48,11 @@ export default function DesktopMainMenu() {
                             <li>List Item Bottom</li>
                         </ul>
                     </div>
-                    <div className={styles.MainMenu__bottom}>Side Nav - Bottom</div>
+                    <div className={styles.MainMenu__bottom}>
+                        <MainMenuProvider>
+                            <MainMenuToggle />
+                        </MainMenuProvider>
+                    </div>
                 </aside>
             </div>
         </div>

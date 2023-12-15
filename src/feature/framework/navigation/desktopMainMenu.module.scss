@@ -2,6 +2,7 @@
     width: var(--layout-mainMenu-width);
     height: 100%;
     flex: 0 0 auto;
+    transition: width 0.5s;
 
     &__layout {
         display: block;

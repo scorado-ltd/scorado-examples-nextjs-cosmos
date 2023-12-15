@@ -1,7 +1,8 @@
 :root {
   // Layout
-  --layout-mainMenu-maxWidth: 340px;
-  --layout-mainMenu-width: var(--layout-mainMenu-maxWidth);
+  --layout-mainMenu-openWidth: 340px;
+  --layout-mainMenu-closedWidth: 70px;
+  --layout-mainMenu-width: var(--layout-mainMenu-openWidth);
 
   --theme-primaryColour-light: #43FFB1;
   --theme-primaryColour-dark: #FC0A6A;
