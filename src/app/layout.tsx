@@ -3,8 +3,9 @@ import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
+import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
-import SideNav from "~f/framework/sideNav"
+import DesktopMainMenu from "~f/framework/navigation/desktopMainMenu"
 import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
@@ -16,9 +17,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
+        <ClientPreRenderer />
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
-            <SideNav />
+            <DesktopMainMenu />
             <div className={styles.Main}>
               <div className={styles.Main__header}>
                 <h1>Header</h1>

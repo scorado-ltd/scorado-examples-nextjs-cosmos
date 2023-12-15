@@ -1,19 +1,7 @@
 :root {
-  --maxMenu-width: 288px;
-  --primaryMenu-openWidth: var(--maxMenu-width);
-  --primaryMenu-closedWidth: 56px;
-  --primaryMenu-width: var(--primaryMenu-closedWidth);
-  --secondaryMenu-width: 232px;
-  --secondaryMenu-openPositionX: 0px;
-  --secondaryMenu-closedPositionX: -232px;
-  --secondaryMenu-positionX: var(--secondaryMenu-closedPositionX);
-  --secondaryMenu-openPositionY: 0;
-  --secondaryMenu-closedPositionY: 100%;
-  --secondaryMenu-positionY: var(--secondaryMenu-closedPositionY);
-  --menu-width: min(var(--maxMenu-width), calc(var(--primaryMenu-width) + var(--secondaryMenu-width) + var(--secondaryMenu-positionX)));
-  --toast-translateY: var(--toast-slideDown);
-  --toast-slideDown: 400px;
-  --toast-slideUp: 0px;
+  // Layout
+  --layout-mainMenu-maxWidth: 340px;
+  --layout-mainMenu-width: var(--layout-mainMenu-maxWidth);
 
   --theme-primaryColour-light: #43FFB1;
   --theme-primaryColour-dark: #FC0A6A;
@@ -22,7 +10,6 @@
   --theme-supportColour3: #9604FF;
   --theme-supportColour4: #f1f1f1;
   --theme-supportColour5: #1d1d27;
-
   --theme-danger: #F24726;
 
   --theme-text-colour: #9B9B9B;
@@ -32,18 +19,6 @@
   --theme-background-colour-dark: #242430;
   --theme-background-colour-darker: #161620;
   --theme-background-colour-darkest: #0F0F19;
-
-  --theme-community-colour: var(--theme-supportColour3);
-  --theme-event-colour: var(--theme-supportColour2);
-  --theme-discipline-colour: var(--theme-supportColour2);
-
-  --scrollbar-width: 10px;
-  --scrollbar-track-colour: rgba(255, 255, 255, 0);
-  --scrollbar-thumb-colour: #717171;
-  --scrollbar-thumb-colour-hover: #d6d6d6;
-
-
-  --container-padding__h: 48px;
 
 
 
@@ -62,18 +37,6 @@
   --theme-darkestColor: #0F0F19;
 }
 
-@media screen and (max-width: 860px) {
-  :root {
-    --primaryMenu-openWidth: 0px;
-    --primaryMenu-closedWidth: 0px;
-    --secondaryMenu-openPositionX: calc(var(--maxMenu-width) * -1);
-    --secondaryMenu-closedPositionX: calc(var(--maxMenu-width) * -1);
-    --menu-width: 0px;
-    --container-padding__h: 16px;
-
-  }
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -81,12 +44,21 @@
   border: 0;
 }
 
-html, body, div, li, ul, a, span, input, p {
+html,
+body,
+div,
+li,
+ul,
+a,
+span,
+input,
+p {
   padding: 0;
   margin: 0;
 }
 
-html, body {
+html,
+body {
   font-family: "Open Sans";
   background-color: #242430;
   color: #FFFFFF;
@@ -139,7 +111,6 @@ a:hover {
 
 p {
   font-size: 14px;
-  //color: var(--theme-text-colour);
   margin: 0;
   margin-bottom: 24px;
 }
@@ -147,7 +118,6 @@ p {
 input {
   font-family: 'Open Sans';
 }
-
 
 input:disabled,
 button:disabled {

@@ -1,5 +1,5 @@
-.SideNav {
-    width: 340px; // Expanded - convert to CSS variable
+.MainMenu {
+    width: var(--layout-mainMenu-width);
     height: 100%;
     flex: 0 0 auto;
 
