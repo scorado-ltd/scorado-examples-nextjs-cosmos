@@ -23,9 +23,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
               <div className={styles.Main__header}>
                 <h1>Header</h1>
               </div>
-              <div className={styles.Main__content}>
+              <div className={styles.Main__container}>
                 <main className={styles.Main__scrollable}>
-                  {children}
+                  <div className={styles.Main__contentContainer}>
+                    <div className={styles.Main__content}>
+                      {children}
+                    </div>
+                  </div>
                 </main>
               </div>
             </div>

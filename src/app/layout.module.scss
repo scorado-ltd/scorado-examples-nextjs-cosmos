@@ -1,3 +1,6 @@
+// TODO - alias this
+@import '../feature/framework/layout.mixin';
+
 .RootContainer {
     display: block;
     height: 100%;
@@ -29,7 +32,7 @@
         background-color: hotpink;
     }
 
-    &__content {
+    &__container {
         flex: 1;
         height: 100%;
         overflow: hidden;
@@ -44,5 +47,33 @@
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    &__contentContainer {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__content {
+        display: flex;
+        max-width: 1060px;
+
+        @include mediaDesktopNarrow {
+            max-width: 1060px;
+        }
+
+        @include mediaDesktopDefault {
+            min-width: 980px;
+        }
+
+        @include mediaDesktopWide {
+            max-width: 1280px;
+        }
+
+        background-color: sienna;
     }
 }

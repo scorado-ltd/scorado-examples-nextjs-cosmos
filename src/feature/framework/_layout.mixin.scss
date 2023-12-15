@@ -1,0 +1,23 @@
+@mixin mediaMobile {
+    @media (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin mediaDesktopNarrow {
+    @media (min-width: 1024px) and (max-width: 1365px) {
+        @content;
+    }
+}
+
+@mixin mediaDesktopDefault {
+    @media (min-width: 1366px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
+@mixin mediaDesktopWide {
+    @media (min-width: 1920px) {
+        @content;
+    }
+}
