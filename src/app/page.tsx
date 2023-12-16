@@ -1,5 +1,5 @@
-import FullContainer from '~f/framework/container';
 import { Heading1, Heading2 } from '~f/framework/heading';
+import FullContainer from '~f/framework/layout/container';
 
 export default function Page() {
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import useScroll from "./scrollable";
+import useScroll from "~f/web/scrollable";
 
 export const useMainScroll = () => useScroll("mainScrollable");
 

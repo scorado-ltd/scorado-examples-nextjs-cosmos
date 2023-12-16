@@ -5,8 +5,8 @@ import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
 import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
-import { Header } from "~f/framework/header"
 import { Heading2 } from "~f/framework/heading"
+import { Header } from "~f/framework/layout/header"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
 import styles from './layout.module.scss'
