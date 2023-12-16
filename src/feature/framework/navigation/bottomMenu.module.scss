@@ -1,0 +1,11 @@
+@import '../layout.mixin';
+
+.BottomMenu {
+    display: none;
+    position: relative;
+    z-index: 2;
+
+    @include mediaMobile {
+        display: block;
+    }
+}

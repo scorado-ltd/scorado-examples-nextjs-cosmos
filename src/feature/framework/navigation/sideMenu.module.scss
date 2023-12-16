@@ -1,8 +1,14 @@
-.MainMenu {
+@import '../layout.mixin';
+
+.SideMenu {
     width: var(--layout-mainMenu-width);
     height: 100%;
     flex: 0 0 auto;
     transition: width 0.5s;
+
+    @include mediaMobile {
+        display: none;
+    }
 
     &__layout {
         display: block;

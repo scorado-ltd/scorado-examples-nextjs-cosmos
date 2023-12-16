@@ -1,14 +1,14 @@
-import styles from './desktopMainMenu.module.scss';
-import { MainMenuToggle } from './desktopMainMenuClient';
-import { MainMenuProvider } from './desktopMainMenuContext';
+import styles from './sideMenu.module.scss';
+import { SideMenuToggle } from './sideMenuClient';
+import { SideMenuProvider } from './sideMenuContext';
 
-export default function DesktopMainMenu() {
+export default function SideMenu() {
     return (
-        <div className={styles.MainMenu}>
-            <div className={styles.MainMenu__layout}>
-                <aside className={styles.MainMenu__container}>
-                    <div className={styles.MainMenu__top}>Side Nav - Top</div>
-                    <div className={styles.MainMenu__main}>
+        <div className={styles.SideMenu}>
+            <div className={styles.SideMenu__layout}>
+                <aside className={styles.SideMenu__container}>
+                    <div className={styles.SideMenu__top}>Side Nav - Top</div>
+                    <div className={styles.SideMenu__main}>
                         <ul>
                             <li>List Item Top</li>
                             <li>List Item</li>
@@ -48,10 +48,10 @@ export default function DesktopMainMenu() {
                             <li>List Item Bottom</li>
                         </ul>
                     </div>
-                    <div className={styles.MainMenu__bottom}>
-                        <MainMenuProvider>
-                            <MainMenuToggle />
-                        </MainMenuProvider>
+                    <div className={styles.SideMenu__bottom}>
+                        <SideMenuProvider>
+                            <SideMenuToggle />
+                        </SideMenuProvider>
                     </div>
                 </aside>
             </div>

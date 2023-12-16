@@ -5,7 +5,8 @@ import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
 import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
-import DesktopMainMenu from "~f/framework/navigation/desktopMainMenu"
+import { BottomMenu } from "~f/framework/navigation/bottomMenu"
+import SideMenu from "~f/framework/navigation/sideMenu"
 import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <ClientPreRenderer />
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
-            <DesktopMainMenu />
+            <SideMenu />
             <div className={styles.Main}>
               <div className={styles.Main__header}>
                 <h1>Header</h1>
@@ -34,6 +35,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   </div>
                 </main>
               </div>
+              <footer className={styles.Main__footer}>
+                <BottomMenu />
+              </footer>
             </div>
           </div>
         </div>
