@@ -56,6 +56,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @include mediaMobile {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
     }
 
     &__content {
@@ -80,5 +85,7 @@
     &__footer {
         width: 100%;
         z-index: 1;
+
+        background-color: darkmagenta;
     }
 }

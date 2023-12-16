@@ -1,0 +1,22 @@
+@import './layout.mixin';
+
+.Header {
+    display: none;
+    flex-shrink: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+
+    transition: transform 0.5s;
+
+    height: 71px;
+    background-color: hotpink;
+
+    @include mediaMobile {
+        display: block;
+    }
+
+    &___hidden {
+        transform: translateY(-71px);
+    }
+}
