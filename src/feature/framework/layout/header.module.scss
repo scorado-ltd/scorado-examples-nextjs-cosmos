@@ -1,22 +1,26 @@
 @import './layout.mixin';
 
+$headerHeight: 71px;
+
 .Header {
-    display: none;
     flex-shrink: 0;
     width: 100%;
-    position: fixed;
+    position: relative;
     z-index: 2;
 
     transition: transform 0.5s;
 
-    height: 71px;
+    height: $headerHeight;
     background-color: hotpink;
 
     @include mediaMobile {
         display: block;
+        position: fixed;
     }
 
     &___hidden {
-        transform: translateY(-71px);
+        @include mediaMobile {
+            transform: translateY(calc(-1 * #{$headerHeight}));
+        }
     }
 }
