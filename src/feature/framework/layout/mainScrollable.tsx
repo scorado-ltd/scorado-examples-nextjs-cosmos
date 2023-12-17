@@ -1,7 +1,16 @@
 'use client';
 
-import useScroll from "~f/web/scrollable";
+import { PropsWithChildren } from "react";
+import { Scrollable, useScroll } from "./scrollable";
 
-export const useMainScroll = () => useScroll("mainScrollable");
+const mainScrollableId = "mainScrollable";
 
-export default useMainScroll;
+export const useMainScroll = () => useScroll(mainScrollableId);
+
+export function MainScrollable({ children }: PropsWithChildren) {
+    return (
+        <Scrollable id={mainScrollableId}>
+            {children}
+        </Scrollable>
+    )
+}

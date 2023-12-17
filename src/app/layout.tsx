@@ -7,6 +7,7 @@ import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
 import { Heading2 } from "~f/framework/heading"
 import { Header } from "~f/framework/layout/header"
+import { MainScrollable } from "~f/framework/layout/mainScrollable"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
 import styles from './layout.module.scss'
@@ -29,13 +30,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 <Heading2>Header</Heading2>
               </Header>
               <div className={styles.Main__container}>
-                <main id="mainScrollable" className={styles.Main__scrollable}>
-                  <div className={styles.Main__contentContainer}>
+                <MainScrollable>
+                  <main className={styles.Main__contentContainer}>
                     <div className={styles.Main__content}>
                       {children}
                     </div>
-                  </div>
-                </main>
+                  </main>
+                </MainScrollable>
               </div>
               <footer className={styles.Main__footer}>
                 <BottomMenu />

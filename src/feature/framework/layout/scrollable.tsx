@@ -1,13 +1,14 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
+import styles from './scrollable.module.scss';
 
 interface ScrollPosition {
     x: number;
     y: number;
 }
 
-const useScroll = (elementId: string): ScrollPosition => {
+export const useScroll = (elementId: string): ScrollPosition => {
     const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
         x: 0,
         y: 0,
@@ -37,4 +38,10 @@ const useScroll = (elementId: string): ScrollPosition => {
     return scrollPosition;
 };
 
-export default useScroll;
+export function Scrollable({ children, id }: PropsWithChildren<{ id: string }>) {
+    return (
+        <div id={id} className={styles.Scrollable}>
+            {children}
+        </div>
+    )
+}

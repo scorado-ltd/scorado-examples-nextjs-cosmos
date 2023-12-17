@@ -2,11 +2,11 @@
 
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import styles from './header.module.scss';
-import useScroll from "./mainScrollable";
+import { useMainScroll } from "./mainScrollable";
 
 export function Header({ children }: PropsWithChildren) {
     let lastScrollY = useRef(0);
-    const { y: scrollY } = useScroll();
+    const { y: scrollY } = useMainScroll();
     const [isVisible, setIsVisible] = useState(true)
 
     useEffect(() => {
