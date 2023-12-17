@@ -26,7 +26,6 @@
     }
 
     &__content {
-        display: flex;
         max-width: 1060px;
 
         @include mediaDesktopNarrow {
