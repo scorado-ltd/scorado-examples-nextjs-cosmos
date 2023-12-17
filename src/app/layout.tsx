@@ -5,9 +5,6 @@ import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
 import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
-import { Heading2 } from "~f/framework/heading"
-import { Header } from "~f/framework/layout/header"
-import { MainScrollable } from "~f/framework/layout/mainScrollable"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
 import styles from './layout.module.scss'
@@ -26,18 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <div className={styles.AppContainer}>
             <SideMenu />
             <div className={styles.Main}>
-              <Header>
-                <Heading2>Header</Heading2>
-              </Header>
-              <div className={styles.Main__container}>
-                <MainScrollable>
-                  <main className={styles.Main__contentContainer}>
-                    <div className={styles.Main__content}>
-                      {children}
-                    </div>
-                  </main>
-                </MainScrollable>
-              </div>
+              {children}
               <footer className={styles.Main__footer}>
                 <BottomMenu />
               </footer>
