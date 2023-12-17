@@ -3,7 +3,6 @@ import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
-import { ClientPreRenderer } from "~f/framework/clientPreRenderer"
 import '~f/framework/global.scss'
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
-        <ClientPreRenderer />
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
             <SideMenu />

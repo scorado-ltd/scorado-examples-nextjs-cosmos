@@ -1,11 +1,7 @@
 'use client'
 
-function clientPreRender() {
-    console.log("Client Pre Render Function")
-}
-
-export const ClientPreRenderer = () => {
-    const functionString = String(clientPreRender);
+export function ClientPreRenderer({ f }: { f: () => void }) {
+    const functionString = String(f);
     let codeToRunOnClient = `(${functionString})()`;
 
     // eslint-disable-next-line react/no-danger

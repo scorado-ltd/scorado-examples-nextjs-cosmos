@@ -1,7 +1,19 @@
 'use client'
 
 import { PrimaryButton } from "~f/framework/button";
+import { ClientPreRenderer } from "../clientPreRenderer";
 import { useSideMenuContext } from "./sideMenuContext";
+
+export function SideMenuPreRender() {
+    function setColor() {
+        const root = document.documentElement;
+        root.style.setProperty('--layout-sideMenu-color', 'var(--layout-sideMenu-colorAlt)');
+    }
+
+    return (
+        <ClientPreRenderer f={setColor} />
+    )
+}
 
 export function SideMenuToggle() {
     const { IsOpen, ToggleMenu } = useSideMenuContext();

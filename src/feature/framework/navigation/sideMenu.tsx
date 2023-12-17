@@ -1,10 +1,11 @@
 import styles from './sideMenu.module.scss';
-import { SideMenuToggle } from './sideMenuClient';
+import { SideMenuPreRender, SideMenuToggle } from './sideMenuClient';
 import { SideMenuProvider } from './sideMenuContext';
 
 export default function SideMenu() {
     return (
         <div className={styles.SideMenu}>
+            <SideMenuPreRender />
             <div className={styles.SideMenu__layout}>
                 <aside className={styles.SideMenu__container}>
                     <div className={styles.SideMenu__top}>Side Nav - Top</div>

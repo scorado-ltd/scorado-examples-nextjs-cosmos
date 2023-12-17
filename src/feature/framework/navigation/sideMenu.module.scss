@@ -49,7 +49,7 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: unset;
 
-        background-color: crimson;
+        background-color: var(--layout-sideMenu-color);
     }
 
     &__bottom {
