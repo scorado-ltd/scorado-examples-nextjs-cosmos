@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from "next/cache";
-import { BLOG_SUMMARIES_CACHE_TAG, crupdateBlog, deleteBlog } from "./blogApi";
+import { BLOG_SUMMARIES_CACHE_TAG, crupdateBlog, deleteBlog, getBlogCacheTag } from "./blogApi";
 
 export async function createBlogAction(formData: FormData) {
     const id = formData.get('id') as string;
@@ -45,6 +45,7 @@ export async function deleteBlogAction(id: string) {
 
     if (response.ok) {
         revalidateTag(BLOG_SUMMARIES_CACHE_TAG);
+        revalidateTag(getBlogCacheTag(id));
 
         return {
             success: true,

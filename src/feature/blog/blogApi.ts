@@ -93,6 +93,11 @@ async function deleteBlogSummary(id: string): Promise<void> {
     }
 }
 
+const BLOG_CACHE_TAG = "blog";
+export function getBlogCacheTag(id: string): string {
+    return `${BLOG_CACHE_TAG}-${id}`;
+}
+
 export interface BlogPost extends BlogPostSummary {
     content: string
 }
@@ -101,7 +106,8 @@ export async function crupdateBlog(blogPost: BlogPost): Promise<ApiResponse<unkn
     const response = await callApi<unknown>({
         endpoint: `blog-${blogPost.id}`,
         method: "POST",
-        bodyJson: blogPost
+        bodyJson: blogPost,
+        cacheTags: [getBlogCacheTag(blogPost.id)]
     });
 
     if (response.ok) {
@@ -114,7 +120,8 @@ export async function crupdateBlog(blogPost: BlogPost): Promise<ApiResponse<unkn
 export async function getBlog(id: string) : Promise<ApiResponse<BlogPost>> {
     const response = await callApi<BlogPost>({
         endpoint: `blog-${id}`,
-        method: "GET"
+        method: "GET",
+        cacheTags: [getBlogCacheTag(id)]
     });
 
     return response;
@@ -123,7 +130,8 @@ export async function getBlog(id: string) : Promise<ApiResponse<BlogPost>> {
 export async function deleteBlog(id: string) : Promise<ApiResponse<unknown>> {
     const response = await callApi<unknown>({
         endpoint: `blog-${id}`,
-        method: "DELETE"
+        method: "DELETE",
+        cacheTags: [getBlogCacheTag(id)]
     });
 
     if (response.ok) {
