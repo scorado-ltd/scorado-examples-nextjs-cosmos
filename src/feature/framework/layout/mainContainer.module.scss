@@ -27,9 +27,10 @@
 
     &__content {
         max-width: 1060px;
+        width: 100%;
 
         @include mediaDesktopNarrow {
-            max-width: 1060px;
+            min-width: 980px;
         }
 
         @include mediaDesktopDefault {

@@ -4,7 +4,8 @@ export interface ApiRequest {
     endpoint: string,
     method: string,
     queryParams?: URLSearchParams,
-    bodyJson: object,
+    bodyJson?: object,
+    cacheTags?: string[]
 }
 export interface ApiResponse<T> {
     readonly ok: boolean,
@@ -18,6 +19,9 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
     if (apiRequest.queryParams) {
         url += `?${apiRequest.queryParams}`
     }
+
+    console.log(`callApi | ${apiRequest.method} | ${url} | ${JSON.stringify(apiRequest.bodyJson)}`)
+
     const accessToken = process.env.JSONBIN_APIKEY;
 
     const headers = new Headers()
@@ -26,10 +30,16 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
 
     const request: RequestInit = {
         headers: headers,
-        method: apiRequest.method
+        method: apiRequest.method,
+        cache: "no-cache",
+        next: {
+            tags: apiRequest.cacheTags
+        }
     }
 
-    request.body = JSON.stringify(apiRequest.bodyJson)
+    if (apiRequest.bodyJson) {
+        request.body = JSON.stringify(apiRequest.bodyJson)
+    }
 
     const response = await fetch(url, request)
 
@@ -40,6 +50,8 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
 
     try {
         const json = await response.json();
+
+        console.log(`callApi | json: `, json)
 
         if (response.ok) {
             apiResponse.data = json;
