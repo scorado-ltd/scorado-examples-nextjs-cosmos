@@ -31,7 +31,8 @@ async function setBlogSummaries(blogSummaries: BlogPostSummary[]): Promise<ApiRe
 export async function getBlogSummaries(): Promise<ApiResponse<Blogs>> {
     const response = await callApi<Blogs>({
         endpoint: "blogs",
-        method: "GET"
+        method: "GET",
+        cacheTags: [BLOG_SUMMARIES_CACHE_TAG]
     });
 
     if (response.status === StatusCodes.NOT_FOUND) {
@@ -111,7 +112,6 @@ export async function crupdateBlog(blogPost: BlogPost): Promise<ApiResponse<unkn
 }
 
 export async function getBlog(id: string) : Promise<ApiResponse<BlogPost>> {
-    console.log("getBlog | id: ", id);
     const response = await callApi<BlogPost>({
         endpoint: `blog-${id}`,
         method: "GET"

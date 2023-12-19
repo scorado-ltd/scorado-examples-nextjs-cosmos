@@ -20,7 +20,7 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
         url += `?${apiRequest.queryParams}`
     }
 
-    console.log(`callApi | ${apiRequest.method} | ${url} | ${JSON.stringify(apiRequest.bodyJson)}`)
+    //console.log(`callApi | ${apiRequest.method} | ${url} | ${JSON.stringify(apiRequest.bodyJson)}`)
 
     const accessToken = process.env.JSONBIN_APIKEY;
 
@@ -31,7 +31,6 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
     const request: RequestInit = {
         headers: headers,
         method: apiRequest.method,
-        cache: "no-cache",
         next: {
             tags: apiRequest.cacheTags
         }
@@ -51,7 +50,7 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
     try {
         const json = await response.json();
 
-        console.log(`callApi | json: `, json)
+        //console.log(`callApi | json: `, json)
 
         if (response.ok) {
             apiResponse.data = json;

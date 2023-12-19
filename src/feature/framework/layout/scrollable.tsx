@@ -14,26 +14,26 @@ export const useScroll = (elementId: string): ScrollPosition => {
         y: 0,
     });
 
-    const getElement = () => {
-        return document.getElementById(elementId)!;
-    }
-
-    const handleScroll = () => {
-        const element = getElement();
-
-        setScrollPosition({
-            x: element.scrollLeft,
-            y: element.scrollTop,
-        });
-    };
-
     useEffect(() => {
+        const getElement = () => {
+            return document.getElementById(elementId)!;
+        }
+
+        const handleScroll = () => {
+            const element = getElement();
+
+            setScrollPosition({
+                x: element.scrollLeft,
+                y: element.scrollTop,
+            });
+        };
+
         getElement().addEventListener("scroll", handleScroll);
 
         return () => {
             getElement().removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [elementId]);
 
     return scrollPosition;
 };
