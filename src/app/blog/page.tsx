@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import BlogFavoritesLatest from "~f/blog/blogFavoritesLatest";
 import { BlogSummaries } from "~f/blog/blogSummaries";
 import CreateBlogForm from "~f/blog/createBlog";
@@ -14,9 +13,7 @@ export default function Page() {
             <Heading2>Blogs</Heading2>
             <BlogSummaries />
             <Heading2>Favorite Blogs</Heading2>
-            <Suspense fallback={<BlogFavoritesLatest />}>
-                <BlogFavoritesLatest />
-            </Suspense>
+            <BlogFavoritesLatest />
         </FullContainer>
     )
 }

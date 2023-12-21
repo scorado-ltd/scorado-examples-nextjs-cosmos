@@ -1,9 +1,50 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { getBlogFavorites, getBlogSummaries } from "./blogApi";
 
-export function BlogFavoritesLatestLoading() {
+export function FavoritesListLoading() {
     return (
-        <div>Loading...</div>
+        <>
+            <div>- - - -</div>
+            <div>- - - -</div>
+            <div>- - - -</div>
+        </>
+    )
+}
+
+async function FavoritesList({ lastCount }: { lastCount: number }) {
+    const blogSummaries = await getBlogSummaries();
+    const blogFavorites = await getBlogFavorites();
+    const favoriteBlogIds = blogFavorites.data?.blogIds ?? [];
+
+    const favorites = favoriteBlogIds.slice(lastCount * -1).flatMap(blogId => {
+        const blog = blogSummaries.data?.blogSummaries.filter(blog => blog.id === blogId);
+        if (blog) {
+            return blog;
+        }
+
+        return [];
+    });
+
+    return (
+        <>
+            {favorites.length > 0 ? favorites.map(blog => (
+                <div key={blog.id}>
+                    <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
+                </div>
+            )) : (
+                <div>No favorites found</div>
+            )}
+        </>
+    )
+}
+
+async function FavoritesCount() {
+    const blogFavorites = await getBlogFavorites();
+    const favoriteBlogIds = blogFavorites.data?.blogIds ?? [];
+
+    return (
+        <span>{favoriteBlogIds.length}</span>
     )
 }
 
@@ -23,16 +64,17 @@ export default async function BlogFavoritesLatest() {
 
     return (
         <div>
-            <div>Last 3 Favorited:</div>
+            <div>Total Favorites:&nbsp;
+                <Suspense fallback={<span>0</span>}>
+                    <FavoritesCount />
+                </Suspense>
+            </div>
+            <div>Last Favorited:</div>
             <br />
             <div>
-                {favorites.length > 0 ? favorites.map(blog => (
-                    <div key={blog.id}>
-                        <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-                    </div>
-                )) : (
-                    <div>No favorites found</div>
-                )}
+                <Suspense fallback={<FavoritesListLoading />}>
+                    <FavoritesList lastCount={3} />
+                </Suspense>
             </div>
             <br />
             <div>

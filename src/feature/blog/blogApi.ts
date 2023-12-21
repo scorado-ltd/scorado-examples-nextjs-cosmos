@@ -119,8 +119,6 @@ export async function setBlogFavorites(blogIds: string[]): Promise<ApiResponse<u
 }
 
 export async function getBlogFavorites(): Promise<ApiResponse<BlogFavorites>> {
-    await sleep(2000);
-
     const response = await callApi<BlogFavorites>({
         endpoint: "blog-favorites",
         method: "GET",
