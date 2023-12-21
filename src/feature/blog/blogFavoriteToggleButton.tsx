@@ -1,14 +1,18 @@
 'use client';
 
+import { useOptimistic } from "react";
 import { PrimaryButton } from "~f/framework/button";
 import { toggleBlogFavoriteAction } from "./blogAction";
 
 export default async function BlogFavoriteToggleButton({ blogId, isFavorite }: { blogId: string, isFavorite: boolean }) {
-    async function toggle(blogId: string) {
+    const [optimisticIsFavorite, setOptimisticIsFavorite] = useOptimistic(isFavorite);
+
+    async function toggle() {
+        setOptimisticIsFavorite(!optimisticIsFavorite);
         await toggleBlogFavoriteAction(blogId);
     };
 
     return (
-        <PrimaryButton onClick={() => toggle(blogId)} style={{ minWidth: 50 }}>{isFavorite ? '❤️' : '🖤'}</PrimaryButton>
+        <PrimaryButton onClick={toggle} style={{ minWidth: 50 }}>{optimisticIsFavorite ? '❤️' : '🖤'}</PrimaryButton>
     )
 }
