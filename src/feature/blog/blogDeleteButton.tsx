@@ -1,14 +1,17 @@
 'use client';
 
 import { PrimaryButton } from "~f/framework/button";
+import { useServerAction } from "~f/web/serverActionClient";
 import { deleteBlogAction } from "./blogAction";
 
 export default function BlogDeleteButton({ blogId }: { blogId: string }) {
-    const deleteBlog = (blogId: string) => {
-        deleteBlogAction(blogId);
+    const [runAciton, isPending] = useServerAction(deleteBlogAction);
+
+    async function deleteBlog() {
+        await runAciton(blogId);
     };
 
     return (
-        <PrimaryButton onClick={() => deleteBlog(blogId)} style={{ minWidth: 50 }}>✖️</PrimaryButton>
+        <PrimaryButton onClick={deleteBlog} style={{ minWidth: 50 }}>{isPending ? '⌛' : '✖️'}</PrimaryButton>
     )
 }
