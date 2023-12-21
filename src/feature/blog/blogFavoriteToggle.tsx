@@ -1,23 +1,18 @@
-'use client';
-
-import { useEffect, useState } from "react";
 import { PrimaryButton } from "~f/framework/button";
-import { isBlogFavorite, toggleBlogFavorite } from "./blogClient";
+import { getBlogFavorites } from "./blogApi";
+import BlogFavoriteToggleButton from "./blogFavoriteToggleButton";
 
-export default function BlogFavoriteToggle({ blogId }: { blogId: string }) {
-    const [isFavorite, setIsFavorite] = useState(false);
+export function BlogFavoriteToggleLoading() {
+    return (
+        <PrimaryButton>⏳</PrimaryButton>
+    )
+}
 
-    function toggle(blogId: string) {
-        const toggled = toggleBlogFavorite(blogId);
-        setIsFavorite(toggled);
-    };
-
-    useEffect(() => {
-        const toggled = isBlogFavorite(blogId);
-        setIsFavorite(toggled);
-    }, [isFavorite, isBlogFavorite])
+export default async function BlogFavoriteToggle({ blogId }: { blogId: string }) {
+    const favorites = await getBlogFavorites();
+    const isFavorite = favorites.data?.blogIds.includes(blogId) ?? false //await isBlogFavorite(blogId);
 
     return (
-        <PrimaryButton onClick={() => toggle(blogId)} style={{ minWidth: 50 }}>{isFavorite ? '❤️' : '🖤'}</PrimaryButton>
+        <BlogFavoriteToggleButton blogId={blogId} isFavorite={isFavorite} />
     )
 }

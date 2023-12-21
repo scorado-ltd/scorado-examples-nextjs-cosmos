@@ -71,7 +71,7 @@ async function updateBlogSummary(blogPostSummary: BlogPostSummary): Promise<void
         if (!blogUpdated) {
             updatedBlogs.push(updatedBlogSummary);
         }
-        
+
         await setBlogSummaries(updatedBlogs);
     }
 }
@@ -91,6 +91,105 @@ async function deleteBlogSummary(id: string): Promise<void> {
 
         await setBlogSummaries(updatedBlogs);
     }
+}
+
+export const BLOG_FAVORITES_CACHE_TAG = "blogFavorites";
+
+export interface BlogFavorites {
+    blogIds: string[]
+}
+
+export async function setBlogFavorites(blogIds: string[]): Promise<ApiResponse<unknown>> {
+    const blogFavorites: BlogFavorites = {
+        blogIds: blogIds
+    };
+
+    const response = await callApi<unknown>({
+        endpoint: "blog-favorites",
+        method: "POST",
+        bodyJson: blogFavorites,
+        cacheTags: [BLOG_FAVORITES_CACHE_TAG]
+    });
+
+    return response;
+}
+
+export async function getBlogFavorites(): Promise<ApiResponse<BlogFavorites>> {
+    const response = await callApi<BlogFavorites>({
+        endpoint: "blog-favorites",
+        method: "GET",
+        cacheTags: [BLOG_FAVORITES_CACHE_TAG]
+    });
+
+    if (response.status === StatusCodes.NOT_FOUND) {
+        await setBlogFavorites([]);
+
+        return await getBlogFavorites();
+    }
+
+    return response;
+}
+
+export async function addBlogFavorite(id: string): Promise<void> {
+    const response = await getBlogFavorites();
+
+    if (response.ok) {
+        const existingBlogIds = response.data?.blogIds ?? [];
+
+        if (!existingBlogIds.includes(id)) {
+            existingBlogIds.push(id);
+        }
+
+        await setBlogFavorites(existingBlogIds);
+    }
+}
+
+export async function deleteBlogFavorite(id: string): Promise<void> {
+    const response = await getBlogFavorites();
+
+    if (response.ok) {
+        const existingBlogIds = response.data?.blogIds ?? [];
+        const updatedBlogIds: string[] = [];
+
+        for (const blogId of existingBlogIds) {
+            if (blogId !== id) {
+                updatedBlogIds.push(blogId);
+            }
+        }
+
+        await setBlogFavorites(updatedBlogIds);
+    }
+}
+
+export async function isBlogFavorite(blogId: string): Promise<boolean> {
+    const blogFavoritesResponse = await getBlogFavorites();
+
+    if (blogFavoritesResponse.ok) {
+        const existingBlogIds = blogFavoritesResponse.data?.blogIds ?? [];
+
+        return existingBlogIds.includes(blogId);
+    }
+
+    return false;
+}
+
+export async function toggleBlogFavorite(blogId: string): Promise<boolean> {
+    const blogFavoritesResponse = await getBlogFavorites();
+
+    if (blogFavoritesResponse.ok) {
+        const existingBlogIds = blogFavoritesResponse.data?.blogIds ?? [];
+        const isFavorite = existingBlogIds.includes(blogId);
+
+        if (isFavorite) {
+            await deleteBlogFavorite(blogId);
+        } else {
+            await addBlogFavorite(blogId);
+        }
+
+        return !isFavorite;
+    }
+
+    return false;
 }
 
 const BLOG_CACHE_TAG = "blog";
@@ -117,7 +216,7 @@ export async function crupdateBlog(blogPost: BlogPost): Promise<ApiResponse<unkn
     return response;
 }
 
-export async function getBlog(id: string) : Promise<ApiResponse<BlogPost>> {
+export async function getBlog(id: string): Promise<ApiResponse<BlogPost>> {
     const response = await callApi<BlogPost>({
         endpoint: `blog-${id}`,
         method: "GET",
@@ -127,7 +226,7 @@ export async function getBlog(id: string) : Promise<ApiResponse<BlogPost>> {
     return response;
 }
 
-export async function deleteBlog(id: string) : Promise<ApiResponse<unknown>> {
+export async function deleteBlog(id: string): Promise<ApiResponse<unknown>> {
     const response = await callApi<unknown>({
         endpoint: `blog-${id}`,
         method: "DELETE",
@@ -136,6 +235,7 @@ export async function deleteBlog(id: string) : Promise<ApiResponse<unknown>> {
 
     if (response.ok) {
         await deleteBlogSummary(id);
+        await deleteBlogFavorite(id);
     }
 
     return response;
