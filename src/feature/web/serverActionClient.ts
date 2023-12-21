@@ -17,7 +17,7 @@ export const useServerAction = <P, R>(
         if (onFinished) onFinished(result);
         resolver.current?.(result);
 
-    }, [result, finished]);
+    }, [result, finished, onFinished]);
 
     const runAction = async (args: P): Promise<R | undefined> => {
         startTransition(() => {
