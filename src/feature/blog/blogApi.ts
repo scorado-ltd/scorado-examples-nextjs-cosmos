@@ -1,6 +1,10 @@
 import { StatusCodes } from "http-status-codes";
 import { ApiResponse, callApi } from "~f/jsonbin";
 
+function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export const BLOG_SUMMARIES_CACHE_TAG = "blogSummaries";
 
 export interface Blogs {
@@ -115,6 +119,8 @@ export async function setBlogFavorites(blogIds: string[]): Promise<ApiResponse<u
 }
 
 export async function getBlogFavorites(): Promise<ApiResponse<BlogFavorites>> {
+    await sleep(2000);
+
     const response = await callApi<BlogFavorites>({
         endpoint: "blog-favorites",
         method: "GET",

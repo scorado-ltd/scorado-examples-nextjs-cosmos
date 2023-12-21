@@ -4,7 +4,7 @@ import BlogFavoriteToggleButton from "./blogFavoriteToggleButton";
 
 export function BlogFavoriteToggleLoading() {
     return (
-        <PrimaryButton>⏳</PrimaryButton>
+        <PrimaryButton style={{ minWidth: 50 }}>🖤</PrimaryButton>
     )
 }
 
