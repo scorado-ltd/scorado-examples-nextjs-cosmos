@@ -1,24 +1,21 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { getBlogFavorites, getBlogSummaries } from "./blogApi";
-import BlogFavoritesCount, { BlogFavoritesCountLoading } from "./blogFavoritesCount";
 
 export function FavoritesListLoading() {
     return (
         <>
-            <div>- - - -</div>
-            <div>- - - -</div>
-            <div>- - - -</div>
+            <div>Loading...</div>
         </>
     )
 }
 
-async function FavoritesList({ lastCount }: { lastCount: number }) {
+async function FavoritesList() {
     const blogSummaries = await getBlogSummaries();
     const blogFavorites = await getBlogFavorites();
     const favoriteBlogIds = blogFavorites.data?.blogIds ?? [];
 
-    const favorites = favoriteBlogIds.slice(lastCount * -1).flatMap(blogId => {
+    const favorites = favoriteBlogIds.flatMap(blogId => {
         const blog = blogSummaries.data?.blogSummaries.filter(blog => blog.id === blogId);
         if (blog) {
             return blog;
@@ -40,7 +37,7 @@ async function FavoritesList({ lastCount }: { lastCount: number }) {
     )
 }
 
-export default async function BlogFavoritesLatest() {
+export default async function BlogFavorites() {
     const blogSummaries = await getBlogSummaries();
     const blogFavorites = await getBlogFavorites();
     const favoriteBlogIds = blogFavorites.data?.blogIds ?? [];
@@ -56,21 +53,10 @@ export default async function BlogFavoritesLatest() {
 
     return (
         <div>
-            <div>Total Favorites:&nbsp;
-                <Suspense fallback={<BlogFavoritesCountLoading />}>
-                    <BlogFavoritesCount />
-                </Suspense>
-            </div>
-            <div>Last Favorited:</div>
-            <br />
             <div>
                 <Suspense fallback={<FavoritesListLoading />}>
-                    <FavoritesList lastCount={3} />
+                    <FavoritesList />
                 </Suspense>
-            </div>
-            <br />
-            <div>
-                <Link href={`/blog/favorites`}>My Favorites</Link>
             </div>
         </div>
     )
