@@ -1,20 +1,28 @@
 import Link from "next/link";
 import { getBlogSummaries } from "./blogApi";
 import BlogDeleteButton from "./blogDeleteButton";
+import BlogFavoriteToggle from "./blogFavoriteToggle";
+import styles from './blogSummaries.module.scss';
 
 export async function BlogSummaries() {
     const blogsResponse = await getBlogSummaries();
     const blogs = blogsResponse.data?.blogSummaries;
 
     return (
-        <ul>
+        <div className={styles.List}>
             {blogs ? blogs.map(blog => (
-                <li key={blog.id}>
-                    <Link href={`/blog/${blog.id}`}>{blog.title}</Link> | <BlogDeleteButton blogId={blog.id} />
-                </li>
+                <div key={blog.id} className={styles.List__item}>
+                    <div className={styles.List__itemButtons}>
+                        <BlogFavoriteToggle blogId={blog.id} />
+                        <BlogDeleteButton blogId={blog.id} />
+                    </div>
+                    <div className={styles.List__itemLink}>
+                        <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
+                    </div>
+                </div>
             )) : (
-                <li>No blogs found</li>
+                <div>No blogs found</div>
             )}
-        </ul>
+        </div>
     )
 }

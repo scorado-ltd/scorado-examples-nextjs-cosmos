@@ -1,0 +1,22 @@
+.List {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+
+    &__item {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &__itemLink {
+        width: 100%;
+    }
+
+    &__itemButtons {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
