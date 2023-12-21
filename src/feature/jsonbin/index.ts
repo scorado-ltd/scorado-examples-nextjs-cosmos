@@ -6,6 +6,7 @@ export interface ApiRequest {
     queryParams?: URLSearchParams,
     bodyJson?: object,
     requestCache?: RequestCache,
+    revalidate?: number | false,
     cacheTags?: string[]
 }
 export interface ApiResponse<T> {
@@ -32,9 +33,10 @@ export async function callApi<T>(apiRequest: ApiRequest): Promise<ApiResponse<T>
     const request: RequestInit = {
         headers: headers,
         method: apiRequest.method,
-        cache: apiRequest.requestCache ?? 'default',
+        cache: apiRequest.requestCache,
         next: {
-            tags: apiRequest.cacheTags
+            tags: apiRequest.cacheTags,
+            revalidate: apiRequest.revalidate
         }
     }
 

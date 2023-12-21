@@ -26,7 +26,6 @@ async function setBlogSummaries(blogSummaries: BlogPostSummary[]): Promise<ApiRe
         endpoint: "blogs",
         method: "POST",
         bodyJson: blogs,
-        cacheTags: [BLOG_SUMMARIES_CACHE_TAG]
     });
 
     return response;
@@ -36,6 +35,7 @@ export async function getBlogSummaries(): Promise<ApiResponse<Blogs>> {
     const response = await callApi<Blogs>({
         endpoint: "blogs",
         method: "GET",
+        revalidate: 3600,
         cacheTags: [BLOG_SUMMARIES_CACHE_TAG]
     });
 
@@ -112,7 +112,6 @@ export async function setBlogFavorites(blogIds: string[]): Promise<ApiResponse<u
         endpoint: "blog-favorites",
         method: "POST",
         bodyJson: blogFavorites,
-        cacheTags: [BLOG_FAVORITES_CACHE_TAG]
     });
 
     return response;
@@ -122,6 +121,7 @@ export async function getBlogFavorites(): Promise<ApiResponse<BlogFavorites>> {
     const response = await callApi<BlogFavorites>({
         endpoint: "blog-favorites",
         method: "GET",
+        revalidate: 3600,
         cacheTags: [BLOG_FAVORITES_CACHE_TAG]
     });
 
@@ -165,18 +165,6 @@ export async function deleteBlogFavorite(id: string): Promise<void> {
     }
 }
 
-export async function isBlogFavorite(blogId: string): Promise<boolean> {
-    const blogFavoritesResponse = await getBlogFavorites();
-
-    if (blogFavoritesResponse.ok) {
-        const existingBlogIds = blogFavoritesResponse.data?.blogIds ?? [];
-
-        return existingBlogIds.includes(blogId);
-    }
-
-    return false;
-}
-
 export async function toggleBlogFavorite(blogId: string): Promise<boolean> {
     const blogFavoritesResponse = await getBlogFavorites();
 
@@ -210,7 +198,6 @@ export async function crupdateBlog(blogPost: BlogPost): Promise<ApiResponse<unkn
         endpoint: `blog-${blogPost.id}`,
         method: "POST",
         bodyJson: blogPost,
-        cacheTags: [getBlogCacheTag(blogPost.id)]
     });
 
     if (response.ok) {
@@ -224,6 +211,7 @@ export async function getBlog(id: string): Promise<ApiResponse<BlogPost>> {
     const response = await callApi<BlogPost>({
         endpoint: `blog-${id}`,
         method: "GET",
+        revalidate: 3600,
         cacheTags: [getBlogCacheTag(id)]
     });
 
@@ -234,7 +222,6 @@ export async function deleteBlog(id: string): Promise<ApiResponse<unknown>> {
     const response = await callApi<unknown>({
         endpoint: `blog-${id}`,
         method: "DELETE",
-        cacheTags: [getBlogCacheTag(id)]
     });
 
     if (response.ok) {
