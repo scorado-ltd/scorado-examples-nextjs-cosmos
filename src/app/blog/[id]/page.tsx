@@ -1,4 +1,5 @@
 import { format, formatISO, getTime } from "date-fns";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBlog, getBlogSummaries } from "~f/blog/blogApi";
 import SuspenseBlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
@@ -23,6 +24,15 @@ export async function generateStaticParams() {
             id: blog.id
         }
     }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const blogResponse = await getBlog(params.id);
+
+    return {
+        title: blogResponse.data?.title,
+        description: 'Blog Description'
+    }
 }
 
 export default async function Page({ params }: PageProps) {
