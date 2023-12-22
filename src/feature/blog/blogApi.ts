@@ -15,6 +15,8 @@ export interface BlogPostSummary {
     title: string,
     createdAt: Date,
     updatedAt: Date,
+    profileImageId?: string,
+    bannerImageId?: string
 }
 
 async function setBlogSummaries(blogSummaries: BlogPostSummary[]): Promise<ApiResponse<unknown>> {

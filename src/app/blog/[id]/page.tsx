@@ -1,11 +1,13 @@
 import { format, formatISO, getTime } from "date-fns";
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlog, getBlogSummaries } from "~f/blog/blogApi";
 import SuspenseBlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
 import { Heading1 } from "~f/framework/heading";
 import FullContainer from "~f/framework/layout/container";
+import { generateBannerImageUrl, generateProfileImageUrl } from "~f/media/image";
 
 interface PageProps {
     params: {
@@ -46,6 +48,8 @@ export default async function Page({ params }: PageProps) {
     const createdAtFormatted = format(blog.createdAt, 'do LLL yyyy');
     const updatedAtIso = formatISO(blog.updatedAt);
     const updatedAtFormatted = format(blog.updatedAt, 'do LLL yyyy');
+    const profileImageUrl = blog.profileImageId ? generateProfileImageUrl(blog.profileImageId) : null;
+    const bannerImageUrl = blog.bannerImageId ? generateBannerImageUrl(blog.bannerImageId) : null;
 
     return (
         <FullContainer>
@@ -54,6 +58,16 @@ export default async function Page({ params }: PageProps) {
             <Link href={`/blog/${blog.id}/edit`}>Edit Blog</Link>
             <p>Created: <time dateTime={createdAtIso}>{createdAtFormatted}</time></p>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
+            {profileImageUrl &&
+                <div>
+                    <Image src={profileImageUrl} alt={blog.title} width={50} height={50} />
+                </div>
+            }
+            {bannerImageUrl &&
+                <div>
+                    <Image src={bannerImageUrl} alt={blog.title} width={500} height={200} />
+                </div>
+            }
             <p>{blog.content}</p>
         </FullContainer>
     )

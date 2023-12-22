@@ -44,6 +44,8 @@ export async function editBlogAction(formData: FormData) {
     const id = formData.get('id') as string;
     const title = formData.get('title') as string;
     const content = formData.get('content') as string;
+    const profileImageId = formData.get('profileImageId') as string;
+    const bannerImageId = formData.get('bannerImageId') as string;
 
     if (!title || !content) {
         return {
@@ -69,7 +71,9 @@ export async function editBlogAction(formData: FormData) {
         title,
         content,
         createdAt,
-        updatedAt
+        updatedAt,
+        profileImageId,
+        bannerImageId
     });
 
     if (response.ok) {
