@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from "next/cache";
-import { BLOG_FAVORITES_CACHE_TAG, BLOG_SUMMARIES_CACHE_TAG, crupdateBlog, deleteBlog, getBlogCacheTag, toggleBlogFavorite } from "./blogApi";
+import { BLOG_FAVORITES_CACHE_TAG, BLOG_SUMMARIES_CACHE_TAG, crupdateBlog, deleteBlog, getBlog, getBlogCacheTag, toggleBlogFavorite } from "./blogApi";
 
 export async function createBlogAction(formData: FormData) {
     const id = formData.get('id') as string;
@@ -36,6 +36,54 @@ export async function createBlogAction(formData: FormData) {
         return {
             success: false,
             message: 'Blog not created'
+        };
+    }
+}
+
+export async function editBlogAction(formData: FormData) {
+    const id = formData.get('id') as string;
+    const title = formData.get('title') as string;
+    const content = formData.get('content') as string;
+
+    if (!title || !content) {
+        return {
+            success: false,
+            message: 'Title and content are required'
+        };
+    }
+
+    const blogResponse = await getBlog(id);
+    const blog = blogResponse.data;
+    if (!blog) {
+        return {
+            success: false,
+            message: 'Blog not found'
+        };
+    }
+
+    const createdAt = blog.createdAt;
+    const updatedAt = new Date();
+
+    const response = await crupdateBlog({
+        id,
+        title,
+        content,
+        createdAt,
+        updatedAt
+    });
+
+    if (response.ok) {
+        revalidateTag(BLOG_SUMMARIES_CACHE_TAG);
+        revalidateTag(getBlogCacheTag(id));
+
+        return {
+            success: true,
+            message: 'Blog edited'
+        };
+    } else {
+        return {
+            success: false,
+            message: 'Blog not edited'
         };
     }
 }

@@ -1,10 +1,10 @@
-import { format, formatISO, getTime } from "date-fns";
+import { format, formatISO } from "date-fns";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBlog, getBlogSummaries } from "~f/blog/blogApi";
-import SuspenseBlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
-import { Heading1 } from "~f/framework/heading";
+import { getBlog } from "~f/blog/blogApi";
+import EditBlogForm from "~f/blog/editBlog";
+import { Heading1, Heading2 } from "~f/framework/heading";
 import FullContainer from "~f/framework/layout/container";
 
 interface PageProps {
@@ -13,26 +13,12 @@ interface PageProps {
     }
 }
 
-export const revalidate = 60; // 1 minute
-export async function generateStaticParams() {
-    const blogsResponse = await getBlogSummaries();
-    const blogs = blogsResponse.data?.blogSummaries ?? [];
-    const sortedBlogs = blogs.sort((a, b) => getTime(b.updatedAt) - getTime(a.updatedAt));
-    const latestBlogs = sortedBlogs.slice(0, 3);
-
-    return latestBlogs.map<PageProps>(blog => ({
-        params: {
-            id: blog.id
-        }
-    }));
-}
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const blogResponse = await getBlog(params.id);
 
     return {
-        title: blogResponse.data?.title,
-        description: 'Blog Description'
+        title: `Editing: "${blogResponse.data?.title}"`,
+        description: 'Editing blog...'
     }
 }
 
@@ -49,12 +35,12 @@ export default async function Page({ params }: PageProps) {
 
     return (
         <FullContainer>
-            <Heading1>{blog.title}</Heading1>
-            <SuspenseBlogFavoriteToggle blogId={blog.id} />
-            <Link href={`/blog/${blog.id}/edit`}>Edit Blog</Link>
+            <Heading1>Editing Blog</Heading1>
+            <Link href={`/blog/${blog.id}`}>Back to Blog</Link>
+            <Heading2>{blog.title}</Heading2>
             <p>Created: <time dateTime={createdAtIso}>{createdAtFormatted}</time></p>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
-            <p>{blog.content}</p>
+            <EditBlogForm blog={blog} />
         </FullContainer>
     )
 }
