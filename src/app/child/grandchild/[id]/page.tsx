@@ -1,9 +1,17 @@
+import { Metadata } from 'next';
 import { Heading1, Heading2 } from '~f/framework/heading';
 import FullContainer from '~f/framework/layout/container';
 
 interface PageProps {
   params: {
     id: string;
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  return {
+    title: `Grandchild ${params.id}`,
+    description: 'Grandchild Dynamic Description'
   }
 }
 

@@ -1,13 +1,7 @@
-import { Metadata } from "next"
 import Link from "next/link"
 import { PropsWithChildren } from "react"
 import { Heading1, Heading2 } from "~f/framework/heading"
 import FullContainer from "~f/framework/layout/container"
-
-export const metadata: Metadata = {
-    title: 'Child Section',
-    description: 'Child section description',
-}
 
 export default function RootLayout({ children }: PropsWithChildren) {
     return (

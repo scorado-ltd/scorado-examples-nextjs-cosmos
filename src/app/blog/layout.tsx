@@ -4,8 +4,8 @@ import { PropsWithChildren } from "react"
 import { MainContainer } from "~f/framework/layout/mainContainer"
 
 export const metadata: Metadata = {
-    title: 'Child Section',
-    description: 'Child section description',
+    title: 'Blog',
+    description: 'Best blog in town',
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {

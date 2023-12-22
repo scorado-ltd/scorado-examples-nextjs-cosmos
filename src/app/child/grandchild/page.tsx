@@ -1,5 +1,11 @@
+import { Metadata } from 'next';
 import { Heading1, Heading2 } from '~f/framework/heading';
 import FullContainer from '~f/framework/layout/container';
+
+export const metadata: Metadata = {
+  title: 'Grandchild',
+  description: 'Grandchild Description',
+}
 
 export default function Page() {
   return (

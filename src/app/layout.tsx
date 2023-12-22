@@ -9,7 +9,10 @@ import SideMenu from "~f/framework/navigation/sideMenu"
 import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
-  title: 'Next.js + React Cosmos | Scorado Examples',
+  title: {
+    template: '%s | Scorado Examples',
+    default: 'Next.js + React Cosmos | Scorado Examples'
+  },
   description: 'An example Next.js application combined with React Cosmos',
 }
 
