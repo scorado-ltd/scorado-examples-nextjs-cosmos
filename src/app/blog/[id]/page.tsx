@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlog, getBlogSummaries } from "~f/blog/blogApi";
-import SuspenseBlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
+import BlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
 import { Heading1 } from "~f/framework/heading";
 import FullContainer from "~f/framework/layout/container";
 import DynamicImage from "~f/media/dynamicImage";
@@ -54,7 +54,7 @@ export default async function Page({ params }: PageProps) {
     return (
         <FullContainer>
             <Heading1>{blog.title}</Heading1>
-            <SuspenseBlogFavoriteToggle blogId={blog.id} />
+            <BlogFavoriteToggle blogId={blog.id} />
             <Link href={`/blog/${blog.id}/edit`}>Edit Blog</Link>
             <p>Created: <time dateTime={createdAtIso}>{createdAtFormatted}</time></p>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getBlogSummaries } from "./blogApi";
 import BlogDeleteButton from "./blogDeleteButton";
-import SuspenseBlogFavoriteToggle from "./blogFavoriteToggle";
+import BlogFavoriteToggle from "./blogFavoriteToggle";
 import styles from './blogSummaries.module.scss';
 
 export async function BlogSummaries() {
@@ -13,7 +13,7 @@ export async function BlogSummaries() {
             {blogs ? blogs.map(blog => (
                 <div key={blog.id} className={styles.List__item}>
                     <div className={styles.List__itemButtons}>
-                        <SuspenseBlogFavoriteToggle blogId={blog.id} />
+                        <BlogFavoriteToggle blogId={blog.id} />
                         <BlogDeleteButton blogId={blog.id} />
                     </div>
                     <div className={styles.List__itemLink}>

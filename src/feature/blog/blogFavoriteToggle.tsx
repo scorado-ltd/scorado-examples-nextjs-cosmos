@@ -3,7 +3,7 @@ import { PrimaryButton } from "~f/framework/button";
 import { getBlogFavorites } from "./blogApi";
 import BlogFavoriteToggleButton from "./blogFavoriteToggleButton";
 
-export async function BlogFavoriteToggle({ blogId }: { blogId: string }) {
+export async function BlogFavoriteToggleRaw({ blogId }: { blogId: string }) {
     const favorites = await getBlogFavorites();
     const isFavorite = favorites.data?.blogIds.includes(blogId) ?? false;
 
@@ -18,10 +18,10 @@ export function BlogFavoriteToggleLoading() {
     )
 }
 
-export default function SuspenseBlogFavoriteToggle({ blogId }: { blogId: string }) {
+export default function BlogFavoriteToggle({ blogId }: { blogId: string }) {
     return (
         <Suspense fallback={<BlogFavoriteToggleLoading />}>
-            <BlogFavoriteToggle blogId={blogId} />
+            <BlogFavoriteToggleRaw blogId={blogId} />
         </Suspense>
     )
 }
