@@ -8,8 +8,6 @@ function imageMediaLoader({ src, width, quality }: ImageLoaderProps) {
 }
 
 export default function ImageMedia(imageProps: ImageProps) {
-    //const 
-
     return (
         <Image
             loader={imageMediaLoader}
