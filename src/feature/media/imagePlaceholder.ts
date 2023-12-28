@@ -6,11 +6,14 @@ import { generateMedialUrl } from "./image";
 export async function getImagePlaceholder(path: string) {
     const src = generateMedialUrl(path, { width: 10 });
 
-    const buffer = await fetch(src).then(async (res) => {
-        return Buffer.from(await res.arrayBuffer());
-    })
+    const response = await fetch(src);
 
-    const result = getPlaiceholder(buffer);
+    if (!response.ok) {
+        return null;
+    }
+
+    const buffer = Buffer.from(await response.arrayBuffer())
+    const result = await getPlaiceholder(buffer);
 
     return result;
 }

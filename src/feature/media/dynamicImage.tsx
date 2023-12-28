@@ -3,17 +3,25 @@ import DynamicImageClient from './dynamicImageClient';
 import { getImagePlaceholder } from './imagePlaceholder';
 
 export default async function DynamicImage(imageProps: ImageProps) {
-    let blurDataURL = undefined;
+    let blurDataURL = imageProps.blurDataURL;
+    let placeholder = imageProps.placeholder;
 
-    if (imageProps.placeholder === 'blur' && imageProps.blurDataURL === undefined) {
-        const { base64 } = await getImagePlaceholder(imageProps.src as string);
-        blurDataURL = base64;
+    if (placeholder === 'blur' && blurDataURL === undefined) {
+        const result = await getImagePlaceholder(imageProps.src as string);
+
+        if (result) {
+            blurDataURL = result.base64;
+        }
+        else {
+            placeholder = 'empty';
+        }
     }
 
     return (
         <DynamicImageClient
-            blurDataURL={blurDataURL}
             {...imageProps}
+            blurDataURL={blurDataURL}
+            placeholder={placeholder}
         />
     )
 }
