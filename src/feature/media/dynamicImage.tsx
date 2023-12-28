@@ -1,9 +1,9 @@
 import { ImageProps } from 'next/image';
 import { getPlaiceholder } from 'plaiceholder';
+import DynamicImageClient from './dynamicImageClient';
 import { generateMedialUrl } from './image';
-import ImageMedia from './imageMedia';
 
-export default async function DynamicImageMedia(imageProps: ImageProps) {
+export default async function DynamicImage(imageProps: ImageProps) {
     let blurDataURL = undefined;
 
     if (imageProps.placeholder === 'blur' && imageProps.blurDataURL === undefined) {
@@ -19,7 +19,7 @@ export default async function DynamicImageMedia(imageProps: ImageProps) {
     }
 
     return (
-        <ImageMedia
+        <DynamicImageClient
             blurDataURL={blurDataURL}
             {...imageProps}
         />

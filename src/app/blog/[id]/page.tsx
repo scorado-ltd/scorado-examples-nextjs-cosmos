@@ -6,7 +6,7 @@ import { getBlog, getBlogSummaries } from "~f/blog/blogApi";
 import SuspenseBlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
 import { Heading1 } from "~f/framework/heading";
 import FullContainer from "~f/framework/layout/container";
-import DynamicImageMedia from "~f/media/dynamicImageMedia";
+import DynamicImage from "~f/media/dynamicImage";
 import { getBannerImagePath, getProfileImagePath } from "~f/media/image";
 
 interface PageProps {
@@ -60,12 +60,12 @@ export default async function Page({ params }: PageProps) {
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
             {profileImageUrl &&
                 <div>
-                    <DynamicImageMedia src={profileImageUrl} alt={blog.title} width={50} height={50} placeholder='blur' />
+                    <DynamicImage src={profileImageUrl} alt={blog.title} width={50} height={50} placeholder='blur' />
                 </div>
             }
             {bannerImageUrl &&
                 <div>
-                    <DynamicImageMedia src={bannerImageUrl} alt={blog.title} width={500} height={200} placeholder='blur' />
+                    <DynamicImage src={bannerImageUrl} alt={blog.title} width={500} height={200} placeholder='blur' />
                 </div>
             }
             <p>{blog.content}</p>
