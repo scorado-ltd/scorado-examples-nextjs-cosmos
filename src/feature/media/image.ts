@@ -34,8 +34,6 @@ export function generateMedialUrl(path: string, options?: MediaUrlOptions): stri
         }
     }
 
-    console.log(url);
-
     return url;
 }
 
