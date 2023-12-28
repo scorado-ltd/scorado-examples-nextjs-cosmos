@@ -65,7 +65,7 @@ export default async function Page({ params }: PageProps) {
             }
             {bannerImageUrl &&
                 <div>
-                    <DynamicImage src={bannerImageUrl} alt={blog.title} width={500} height={200} placeholder='blur' />
+                    <DynamicImage src={bannerImageUrl} alt={blog.title} width={640} height={360} placeholder='blur' />
                 </div>
             }
             <p>{blog.content}</p>
