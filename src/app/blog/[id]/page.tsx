@@ -8,6 +8,7 @@ import { Heading1 } from "~f/framework/heading";
 import FullContainer from "~f/framework/layout/container";
 import DynamicImage from "~f/media/dynamicImage";
 import { getBannerImagePath, getProfileImagePath } from "~f/media/image";
+import styles from "./page.module.scss";
 
 interface PageProps {
     params: {
@@ -59,13 +60,30 @@ export default async function Page({ params }: PageProps) {
             <p>Created: <time dateTime={createdAtIso}>{createdAtFormatted}</time></p>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
             {profileImageUrl &&
-                <div>
-                    <DynamicImage src={profileImageUrl} alt={blog.title} width={50} height={50} placeholder='blur' />
+                <div className={styles.ProfileImage}>
+                    <DynamicImage
+                        src={profileImageUrl}
+                        alt={blog.title}
+                        width={100}
+                        height={100}
+                        placeholder='blur'
+                        style={{ width: '100%', height: 'auto' }}
+                    />
                 </div>
             }
             {bannerImageUrl &&
-                <div>
-                    <DynamicImage src={bannerImageUrl} alt={blog.title} width={640} height={360} placeholder='blur' />
+                <div className={styles.BannerImage}>
+                    <div className={styles.BannerImage__image}>
+                        <DynamicImage
+                            src={bannerImageUrl}
+                            alt={blog.title}
+                            width={640}
+                            height={360}
+                            placeholder='blur'
+                            style={{ width: '100%', height: 'auto' }}
+                            sizes="100vw"
+                        />
+                    </div>
                 </div>
             }
             <p>{blog.content}</p>
