@@ -3,18 +3,23 @@ import { Heading2 } from '../heading'
 import styles from './index.module.scss'
 
 interface ModalProps extends PropsWithChildren {
-    heading?: string
+    header?: string | React.ReactNode
 }
 
-export default function Modal({ children, heading }: ModalProps) {
+export default function Modal({ children, header }: ModalProps) {
     return (
         <div className={styles.Modal}>
             <div className={styles.Modal__container}>
-                {heading &&
-                    <div className={styles.Modal__header}>
-                        <Heading2>Modal</Heading2>
-                    </div>
-                }
+                <div className={styles.Modal__header}>
+                    {header &&
+                        <div className={styles.Modal__headerContent}>
+                            {typeof header === 'string' ?
+                                <Heading2>{header}</Heading2> :
+                                header
+                            }
+                        </div>
+                    }
+                </div>
                 <div className={styles.Modal__content}>
                     {children}
                 </div>
