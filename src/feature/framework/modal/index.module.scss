@@ -33,6 +33,35 @@
         }
     }
 
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &__headerContent {
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+    }
+
+    &__headerCloseButton {
+        width: 30px;
+        height: 30px;
+        border-radius: 25%;
+        border: none;
+        background-color: violet;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background-color: cadetblue;
+        }
+    }
+
     &__content {
         overflow-x: hidden;
         overflow-y: auto;
