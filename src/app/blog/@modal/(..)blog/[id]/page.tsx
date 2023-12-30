@@ -2,7 +2,7 @@ import { format, formatISO } from "date-fns";
 import Link from "next/link";
 import { getBlog } from "~f/blog/blogApi";
 import BlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
-import { Heading2 } from "~f/framework/heading";
+import { RouterModal } from "~f/framework/modal";
 import { getBannerImagePath, getProfileImagePath } from "~f/media/image";
 
 interface PageProps {
@@ -23,8 +23,9 @@ export default async function Page({ params }: PageProps) {
     const bannerImageUrl = blog.bannerImageId ? getBannerImagePath(blog.bannerImageId) : null;
 
     return (
-        <>
-            <Heading2>{blog.title}</Heading2>
+        <RouterModal
+            header={blog.title}
+        >
             <BlogFavoriteToggle blogId={blog.id} />
             <Link href={`/blog/${blog.id}/edit`}>Edit Blog</Link>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
@@ -55,6 +56,6 @@ export default async function Page({ params }: PageProps) {
                     </div>
                 </div>
             } */}
-        </>
+        </RouterModal>
     )
 }
