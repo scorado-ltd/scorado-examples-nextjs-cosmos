@@ -14,14 +14,21 @@ export async function generateMetadata(_params: unknown, parent: ResolvingMetada
     }
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+interface LayoutProps extends PropsWithChildren {
+    modal: React.ReactNode;
+}
+
+export default function RootLayout({ children, modal }: LayoutProps) {
     return (
-        <MainContainer>
-            <div>
-                <Link href="/blog">Back to Blogs</Link> |
-                <Link href="/blog/create">Create Blog</Link>
-            </div>
-            {children}
-        </MainContainer>
+        <>
+            <MainContainer>
+                <div>
+                    <Link href="/blog">Back to Blogs</Link> |
+                    <Link href="/blog/create">Create Blog</Link>
+                </div>
+                {children}
+            </MainContainer>
+            {modal}
+        </>
     )
 }
