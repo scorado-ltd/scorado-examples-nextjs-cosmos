@@ -29,6 +29,7 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
             <SideMenu />
             <div className={styles.Main}>
               {children}
+              {/* <RouterLogger /> */}
               {rootModal}
               <footer className={styles.Main__footer}>
                 <BottomMenu />
