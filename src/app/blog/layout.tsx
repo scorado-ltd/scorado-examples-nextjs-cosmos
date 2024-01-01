@@ -15,10 +15,10 @@ export async function generateMetadata(_params: unknown, parent: ResolvingMetada
 }
 
 interface LayoutProps extends PropsWithChildren {
-    modal: React.ReactNode;
+    blogModal: React.ReactNode;
 }
 
-export default function RootLayout({ children, modal }: LayoutProps) {
+export default function RootLayout({ children, blogModal }: LayoutProps) {
     return (
         <>
             <MainContainer>
@@ -28,7 +28,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
                 </div>
                 {children}
             </MainContainer>
-            {modal}
+            {blogModal}
         </>
     )
 }

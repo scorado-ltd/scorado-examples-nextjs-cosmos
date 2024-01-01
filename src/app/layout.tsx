@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   description: 'An example Next.js application combined with React Cosmos',
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+interface LayoutProps extends PropsWithChildren {
+  rootModal: React.ReactNode;
+}
+
+export default function RootLayout({ children, rootModal }: LayoutProps) {
   return (
     <html lang="en">
       <body>
@@ -25,6 +29,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <SideMenu />
             <div className={styles.Main}>
               {children}
+              {rootModal}
               <footer className={styles.Main__footer}>
                 <BottomMenu />
               </footer>

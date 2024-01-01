@@ -17,7 +17,7 @@ export async function BlogSummaries() {
                         <BlogDeleteButton blogId={blog.id} />
                     </div>
                     <div className={styles.List__itemLink}>
-                        <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
+                        <Link href={`/blog/${blog.id}`} scroll={false}>{blog.title}</Link>
                     </div>
                 </div>
             )) : (
