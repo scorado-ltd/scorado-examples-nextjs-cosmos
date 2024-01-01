@@ -3,7 +3,9 @@ import Link from "next/link";
 import { getBlog } from "~f/blog/blogApi";
 import BlogFavoriteToggle from "~f/blog/blogFavoriteToggle";
 import { RouterModal } from "~f/framework/modal";
+import DynamicImage from "~f/media/dynamicImage";
 import { getBannerImagePath, getProfileImagePath } from "~f/media/image";
+import styles from "./page.module.scss";
 
 interface PageProps {
     params: {
@@ -29,7 +31,7 @@ export default async function Page({ params }: PageProps) {
             <BlogFavoriteToggle blogId={blog.id} />
             <Link href={`/blog/${blog.id}/edit`}>Edit Blog</Link>
             <p>Updated: <time dateTime={updatedAtIso}>{updatedAtFormatted}</time></p>
-            {/* {profileImageUrl &&
+            {profileImageUrl &&
                 <div className={styles.ProfileImage}>
                     <DynamicImage
                         src={profileImageUrl}
@@ -55,7 +57,7 @@ export default async function Page({ params }: PageProps) {
                         />
                     </div>
                 </div>
-            } */}
+            }
         </RouterModal>
     )
 }
