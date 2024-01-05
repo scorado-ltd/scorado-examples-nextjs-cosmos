@@ -65,14 +65,15 @@ export default function Modal({ children, header, footer, onClose }: ModalProps)
 }
 
 export function RouterModal(props: ModalProps) {
+    const { onClose } = props;
     const router = useRouter();
     const handleClose = useCallback(() => {
-        if (props.onClose) {
-            props.onClose();
+        if (onClose) {
+            onClose();
         }
 
         router.back();
-    }, [router]);
+    }, [router, onClose]);
 
     return <Modal {...props} onClose={handleClose} />
 }

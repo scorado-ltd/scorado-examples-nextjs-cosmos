@@ -12,6 +12,7 @@ export default function DynamicImageClient(imageProps: ImageProps) {
         <Image
             loader={loader}
             {...imageProps}
+            alt={imageProps.alt || ''}
         />
     )
 }
