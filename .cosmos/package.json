@@ -11,22 +11,22 @@
     "cosmos-vercel": "bash cosmos-vercel.sh"
   },
   "dependencies": {
-    "@fontsource/open-sans": "^5.0.5",
-    "@fontsource/outfit": "^5.0.5",
-    "eslint-config-next": "^14.0.4",
-    "next": "^14.0.4",
-    "react": "^18.2.0",
-    "react-cosmos": "^6.0.0-beta.6",
-    "react-cosmos-next": "^6.0.0-beta.6",
+    "@fontsource/open-sans": "5.0.5",
+    "@fontsource/outfit": "5.0.5",
+    "eslint-config-next": "14.0.4",
+    "next": "14.0.4",
+    "react": "18.2.0",
+    "react-cosmos": "6.0.0-beta.6",
+    "react-cosmos-next": "6.0.0-beta.6",
     "react-cosmos-plugin-open-fixture": "^6.0.0-alpha.21",
-    "react-dom": "^18.2.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "20.1.0",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "eslint": "^8.45.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.3"
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "eslint": "8.45.0",
+    "sass": "1.69.5",
+    "typescript": "5.3.3"
   }
 }
