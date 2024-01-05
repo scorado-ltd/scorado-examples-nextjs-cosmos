@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "name": "scorado-examples-nextjs-cosmos",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8080",
