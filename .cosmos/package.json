@@ -7,8 +7,7 @@
     "start": "next start -p 8080",
     "lint": "next lint",
     "cosmos": "cosmos --expose-imports",
-    "cosmos-export": "cosmos-export --expose-imports",
-    "cosmos-vercel": "bash cosmos-vercel.sh"
+    "cosmos-export": "cosmos-export --expose-imports"
   },
   "dependencies": {
     "@fontsource/open-sans": "5.0.5",
@@ -18,7 +17,7 @@
     "react": "18.2.0",
     "react-cosmos": "6.0.0-beta.6",
     "react-cosmos-next": "6.0.0-beta.6",
-    "react-cosmos-plugin-open-fixture": "^6.0.0-alpha.21",
+    "react-cosmos-plugin-open-fixture": "6.0.0-alpha.21",
     "react-dom": "18.2.0"
   },
   "devDependencies": {

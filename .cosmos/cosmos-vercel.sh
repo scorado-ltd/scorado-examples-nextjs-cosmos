@@ -1,10 +1,7 @@
 echo '-| Scorado Cosmos |-'
 
-#cd .cosmos
-cd ..
-npm install
 cd .cosmos
 npm install
 npm run cosmos-export
-#mv ./public/cosmos-export ../public
+cp -a ./public/. ../public
 npm run build
