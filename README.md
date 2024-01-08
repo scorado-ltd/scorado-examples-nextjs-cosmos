@@ -1,3 +1,6 @@
+[![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=scorado-examples-nextjs-app&style=for-the-badge&label=App)](https://scorado-examples-nextjs-app.vercel.app/)&nbsp;
+[![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=scorado-examples-nextjs-cosmos&style=for-the-badge&label=Cosmos)](https://scorado-examples-nextjs-cosmos.vercel.app/)
+
 # React Cosmos with Next.js
 
 |Framework|Version|
