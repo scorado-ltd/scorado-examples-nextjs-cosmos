@@ -1,14 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import scoradoLogoIcon from '~p/images/logos/icon.svg';
-import styles from './sideMenu.module.scss';
-import { SideMenuPreRender, SideMenuToggle } from './sideMenuClient';
-import { SideMenuProvider } from './sideMenuContext';
+import { SideMenuProvider } from './context';
+import styles from './index.module.scss';
+import SideMenuPreRenderer from './preRenderer';
+import { SideMenuToggle } from './toggle';
 
 export default function SideMenu() {
     return (
         <div className={styles.SideMenu}>
-            <SideMenuPreRender />
+            <SideMenuPreRenderer />
             <div className={styles.SideMenu__layout}>
                 <aside className={styles.SideMenu__container}>
                     <div className={styles.SideMenu__top}>

@@ -1,10 +1,11 @@
-@import '../layout/layout.mixin';
+@import '../../layout/layout.mixin';
 
 .SideMenu {
     width: var(--layout-sideMenu-width);
     height: 100%;
     flex: 0 0 auto;
     transition: width 0.5s;
+    border-right: 1px solid rgba($color: #D9D9D9, $alpha: 0.2);
 
     @include mediaMobile {
         display: none;

@@ -3,13 +3,13 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 
 interface SideMenuContextProps {
-    IsOpen: boolean;
-    ToggleMenu: () => void;
+    isOpen: boolean;
+    toggleMenu: () => void;
 }
 
 const defaultState: SideMenuContextProps = {
-    IsOpen: false,
-    ToggleMenu: () => { }
+    isOpen: false,
+    toggleMenu: () => { }
 }
 
 export const SideMenuContext = createContext<SideMenuContextProps>(defaultState);
@@ -36,8 +36,8 @@ export const SideMenuProvider: any = ({ children }: PropsWithChildren) => {
 
     return (
         <SideMenuContext.Provider value={{
-            IsOpen: isSideMenuOpen,
-            ToggleMenu: toggleMenu
+            isOpen: isSideMenuOpen,
+            toggleMenu: toggleMenu
         }}>
             {children}
         </SideMenuContext.Provider>
