@@ -1,5 +1,6 @@
 {
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
-    }
+    },
+    "svg.preview.background": "dark-transparent"
 }

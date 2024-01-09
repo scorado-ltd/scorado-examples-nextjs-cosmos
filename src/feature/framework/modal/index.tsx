@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { MouseEventHandler, PropsWithChildren, useCallback, useEffect, useRef } from 'react';
+import { PrimaryButton } from "../button";
 import { Heading2 } from '../heading';
 import styles from './index.module.scss';
 
@@ -46,7 +47,7 @@ export default function Modal({ children, header, footer, onClose }: ModalProps)
                         </div>
                     }
                     <div className={styles.Modal__headerClose}>
-                        <button onClick={handleClose} className={styles.Modal__headerCloseButton}>X</button>
+                        <PrimaryButton onClick={handleClose} style={{ width: 30, height: 30, minWidth: 'auto' }}>X</PrimaryButton>
                     </div>
                 </div>
                 <div className={styles.Modal__content}>

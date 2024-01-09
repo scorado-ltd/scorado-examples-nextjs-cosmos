@@ -11,7 +11,8 @@
     justify-content: center;
     z-index: 999;
 
-    background-color: rgb(220, 20, 60, 0.5);
+    background-color: rgba($color: #19191a, $alpha: 0.8);
+    backdrop-filter: blur(2px);
 
     &__container {
         max-width: 50dvw;
@@ -23,7 +24,7 @@
         flex-direction: column;
         align-items: stretch;
 
-        background-color: blueviolet;
+        background-color: var(--color-grayScale-80);
 
         @include mediaMobile {
             max-width: 100dvw;
@@ -45,32 +46,12 @@
         align-items: center;
     }
 
-    &__headerCloseButton {
-        width: 30px;
-        height: 30px;
-        border-radius: 25%;
-        border: none;
-        background-color: violet;
-        cursor: pointer;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-            background-color: cadetblue;
-        }
-    }
-
     &__content {
         overflow-x: hidden;
         overflow-y: auto;
 
-        scrollbar-width: none;
         -ms-overflow-style: none;
-    }
 
-    &__content::-webkit-scrollbar {
-        display: none;
+        @include scrollbar_general;
     }
 }
