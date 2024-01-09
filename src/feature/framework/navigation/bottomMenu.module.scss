@@ -1,6 +1,9 @@
 @import '../layout/layout.mixin';
 
+$menuHeight: 90px;
+
 .BottomMenu {
+    height: $menuHeight;
     display: none;
     position: relative;
     z-index: 2;

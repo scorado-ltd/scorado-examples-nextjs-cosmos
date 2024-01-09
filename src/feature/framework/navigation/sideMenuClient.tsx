@@ -7,7 +7,8 @@ import { useSideMenuContext } from "./sideMenuContext";
 export function SideMenuPreRender() {
     function setColor() {
         const root = document.documentElement;
-        root.style.setProperty('--layout-sideMenu-color', 'var(--layout-sideMenu-colorAlt)');
+        // Example of changing a CSS variable before the page has rendered
+        //root.style.setProperty('--layout-sideMenu-color', 'var(--layout-sideMenu-colorAlt)');
     }
 
     return (

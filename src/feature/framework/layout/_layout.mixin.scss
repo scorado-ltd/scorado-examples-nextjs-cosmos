@@ -1,9 +1,7 @@
 @mixin layout_globalVariables {
-    --layout-mainMenu-openWidth: 340px;
-    --layout-mainMenu-closedWidth: 70px;
-    --layout-mainMenu-width: var(--layout-mainMenu-openWidth);
-    --layout-sideMenu-color: #1aa0ff;
-    --layout-sideMenu-colorAlt: #F24726;
+    --layout-sideMenu-openWidth: 340px;
+    --layout-sideMenu-closedWidth: 70px;
+    --layout-sideMenu-width: var(--layout-sideMenu-openWidth);
 }
 
 @mixin mediaMobile {

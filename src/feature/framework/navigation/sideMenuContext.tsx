@@ -18,11 +18,11 @@ export const SideMenuProvider: any = ({ children }: PropsWithChildren) => {
     const [isSideMenuOpen, setSideMenuOpen] = useState(true);
 
     function openMenu() {
-        document.documentElement.style.setProperty('--layout-mainMenu-width', 'var(--layout-mainMenu-openWidth)');
+        document.documentElement.style.setProperty('--layout-sideMenu-width', 'var(--layout-sideMenu-openWidth)');
         //document.getElementById(mainMenuId).classList.add(styles.SideMenu__primary___isOpen);
     }
     function closeMenu() {
-        document.documentElement.style.setProperty('--layout-mainMenu-width', 'var(--layout-mainMenu-closedWidth)');
+        document.documentElement.style.setProperty('--layout-sideMenu-width', 'var(--layout-sideMenu-closedWidth)');
         //document.getElementById(mainMenuId).classList.remove(styles.SideMenu__primary___isOpen);
     }
 

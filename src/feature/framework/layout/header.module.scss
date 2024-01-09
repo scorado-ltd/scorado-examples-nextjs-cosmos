@@ -11,7 +11,7 @@ $headerHeight: 71px;
     transition: transform 0.5s;
 
     height: $headerHeight;
-    background-color: hotpink;
+    background-color: var(--color-grayScale-offBlack);
 
     @include mediaMobile {
         display: block;
