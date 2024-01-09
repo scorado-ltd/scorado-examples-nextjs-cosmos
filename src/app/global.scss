@@ -1,0 +1,100 @@
+@import '../feature/framework/layout/layout.mixin';
+@import '../feature/framework/base.mixin';
+
+:root {
+  @include layout_globalVariables;
+  @include color_globalVariables;
+  @include text_globalVariables;
+
+  // Legacy
+  --theme-primaryColour-light: #43FFB1;
+  --theme-primaryColour-dark: #FC0A6A;
+  --theme-supportColour1: #FCF10A;
+  --theme-supportColour2: #1AE6FF;
+  --theme-supportColour3: #9604FF;
+  --theme-supportColour4: #f1f1f1;
+  --theme-supportColour5: #1d1d27;
+  --theme-danger: #F24726;
+}
+
+// Reset
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+// Base
+html,
+body {
+  font-family: var(--font-text);
+  font-weight: 400;
+  color: var(--color-grayScale-offWhite);
+
+  background-color: var(--color-grayScale-offBlack);
+
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+// Text
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1em;
+
+  margin-bottom: 8px;
+}
+
+h1 {
+  @include text_heading1;
+}
+
+h2 {
+  @include text_heading2;
+}
+
+h3 {
+  @include text_heading3;
+}
+
+h4 {
+  @include text_heading4;
+}
+
+p {
+  @include text_normal;
+
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+// Links
+a {
+  color: var(--color-green);
+}
+
+a:hover {
+  color: var(--color-grayScale-offWhite);
+}
+
+// Forms
+input {
+  font-family: var(--font-text);
+}
+
+input:disabled,
+button:disabled {
+  cursor: not-allowed;
+}

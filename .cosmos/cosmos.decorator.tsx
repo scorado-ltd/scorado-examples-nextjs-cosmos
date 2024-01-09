@@ -2,7 +2,7 @@
 
 import "@fontsource/open-sans";
 import "@fontsource/outfit";
-import "~webapp/feature/framework/global.scss";
+import "~webapp/app/global.scss";
 import "./styles/global.css";
 
 import { PropsWithChildren } from "react";

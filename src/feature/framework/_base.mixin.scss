@@ -1,5 +1,66 @@
-// Testing
+@mixin color_globalVariables {
+    --color-green: #4fd97f; // Emerald
+    --color-blue: #5271eb; // Royal Blue
+    --color-yellow: #e6e153; // Maximum Green Yellow
+    --color-coral: #eb4465; // Paradise Pink
+    --color-orange: #eb8e37; // Tiger's Eye
 
+    --color-grayScale-100: #000000;
+    --color-grayScale-offBlack: #19191a;
+    --color-grayScale-80: #292929;
+    --color-grayScale-70: #454545;
+    --color-grayScale-60: #7a7a7a;
+    --color-grayScale-50: #a6a6a6;
+    --color-grayScale-40: #b8b8b8;
+    --color-grayScale-20: #454545;
+    --color-grayScale-offWhite: #fafafa;
+    --color-grayScale-0: #ffffff;
+}
+
+// Text
+@mixin text_globalVariables {
+    --font-heading: "Outfit";
+    --font-text: "Outfit";
+}
+
+@mixin text_heading1 {
+    font-size: 3.125rem;
+    letter-spacing: -0.04em;
+}
+
+@mixin text_heading2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.04em;
+}
+
+@mixin text_heading3 {
+    font-size: 1.625rem;
+    letter-spacing: -0.02em;
+}
+
+@mixin text_heading4 {
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+}
+
+@mixin text_headingSection {
+    font-size: 0.6875rem;
+    line-height: 1.27em;
+    letter-spacing: 0;
+}
+
+@mixin text_normal {
+    line-height: 1.125em;
+    letter-spacing: 0;
+}
+
+@mixin text_small {
+    font-size: 0.875rem;
+    line-height: 1.14em;
+    letter-spacing: 0;
+}
+
+// Testing
 @mixin themedBorder {
     border-radius: 4px;
     background-image:

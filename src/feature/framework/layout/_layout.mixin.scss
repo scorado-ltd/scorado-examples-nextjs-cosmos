@@ -1,3 +1,11 @@
+@mixin layout_globalVariables {
+    --layout-mainMenu-openWidth: 340px;
+    --layout-mainMenu-closedWidth: 70px;
+    --layout-mainMenu-width: var(--layout-mainMenu-openWidth);
+    --layout-sideMenu-color: #1aa0ff;
+    --layout-sideMenu-colorAlt: #F24726;
+}
+
 @mixin mediaMobile {
     @media (max-width: 1023px) {
         @content;

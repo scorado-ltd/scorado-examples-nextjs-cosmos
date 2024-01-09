@@ -3,9 +3,9 @@ import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
-import '~f/framework/global.scss'
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
+import './global.scss'
 import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
