@@ -44,7 +44,8 @@
         flex-basis: 100%;
         overflow-x: hidden;
         overflow-y: auto;
-        -webkit-overflow-scrolling: unset;
+
+        @include scrollbar_hidden;
     }
 
     &__bottom {
