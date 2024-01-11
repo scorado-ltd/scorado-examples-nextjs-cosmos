@@ -5,4 +5,14 @@
     height: 26px;
     width: 26px;
     cursor: pointer;
+
+    @media(hover: hover) {
+        &:hover {
+            color: var(--color-grayScale-offWhite);
+        }
+    }
+
+    &:active {
+        color: var(--color-grayScale-offWhite);
+    }
 }

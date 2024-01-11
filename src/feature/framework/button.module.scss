@@ -9,10 +9,6 @@
     justify-content: center;
     box-sizing: border-box;
 
-    :hover {
-        background-color: transparent;
-    }
-
     // Shapes
     &___rectangle {
         border-radius: 4px;
@@ -57,10 +53,6 @@
         color: #000000;
     }
 
-    &___primary:hover {
-        background-color: #FFFFFF;
-    }
-
     &___secondary {
         padding: 9px 18px;
         border: 2px solid;
@@ -72,11 +64,6 @@
     &___secondary.Button___small {
         padding: 4px 8px 3px 8px;
         border: 1px solid;
-    }
-
-    &___secondary:hover {
-        background-color: #FFFFFF;
-        color: #000000;
     }
 
     &___tertiary {
@@ -91,12 +78,6 @@
 
     &___tertiary.Button___small {
         border: 0;
-    }
-
-    &___tertiary:hover {
-        color: #FFFFFF;
-        text-decoration: underline;
-        text-decoration-color: #FFFFFF;
     }
 
     &___support1 {
@@ -118,14 +99,36 @@
         align-items: center;
         padding: 4px;
     }
+
     &___danger.Button___small {
         padding: 4px 8px 3px 8px;
         border: 1px solid var(--theme-danger);
     }
 
-    &___danger:hover {
-        background-color: transparent;
-        color: #FFFFFF;
+    @media (hover: hover) {
+        :hover {
+            background-color: transparent;
+        }
+
+        &___primary:hover {
+            background-color: #FFFFFF;
+        }
+
+        &___secondary:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        &___tertiary:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+            text-decoration-color: #FFFFFF;
+        }
+
+        &___danger:hover {
+            background-color: transparent;
+            color: #FFFFFF;
+        }
     }
 }
 
