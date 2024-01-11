@@ -1,4 +1,4 @@
-import { BellIcon, CogIcon, MinusIcon, PlusIcon, TickIcon } from '~webapp/feature/framework/icon';
+import { BellIcon, CogIcon, MinusIcon, PlusIcon, TickIcon } from '~webapp/feature/framework/icons';
 
 export const noneIconOption = {
     name: 'None',
