@@ -2,6 +2,7 @@ import "@fontsource/open-sans"
 import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
+import Link from "next/link"
 import { PropsWithChildren } from "react"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
@@ -21,12 +22,56 @@ interface LayoutProps extends PropsWithChildren {
 }
 
 export default function RootLayout({ children, rootModal }: LayoutProps) {
+
   return (
     <html lang="en">
       <body>
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
-            <SideMenu />
+            <SideMenu>
+              <h4>Side Menu Children</h4>
+              <ul>
+                <li><Link href="/login" scroll={false}>Login</Link></li>
+              </ul>
+              <ul>
+                <li>List Item Top</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item Bottom</li>
+              </ul>
+            </SideMenu>
             <div className={styles.Main}>
               {children}
               {/* <RouterLogger /> */}

@@ -1,0 +1,19 @@
+{
+    "version": 1.1,
+    "$schema": "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/master/docs/customData.schema.json",
+    "atDirectives": [
+        {
+            "name": "@container",
+            "description": {
+                "kind": "markdown",
+                "value": "The **@container** CSS at-rule is a conditional group rule that applies styles to a containment context."
+            },
+            "references": [
+                {
+                    "name": "MDN reference",
+                    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@container"
+                }
+            ]
+        }
+    ]
+}

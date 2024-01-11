@@ -1,6 +1,9 @@
 @import '../../layout/layout.mixin';
 
 .SideMenu {
+    $topHeight: 93px;
+    $bottomHeight: 93px;
+
     width: var(--layout-sideMenu-width);
     height: 100%;
     flex: 0 0 auto;
@@ -12,46 +15,93 @@
     }
 
     &__layout {
-        display: block;
-        position: relative;
         height: 100%;
-
-        z-index: 5;
-        transform: translateZ(0);
         width: 100%;
+        transform: translateZ(0);
     }
 
     &__container {
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: $topHeight 1fr $bottomHeight;
 
         background-color: var(--color-grayScale-80);
     }
 
     &__top {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 30px;
+        padding: 50px 24px 14px 24px;
 
-        height: 71px;
+        container-type: inline-size;
+    }
+
+    &__logoFull {
+        display: none;
+    }
+
+    &__logoIcon {
+        display: block;
+    }
+
+    @container (min-width: 125px) {
+        &__logoFull {
+            display: block;
+        }
+
+        &__logoIcon {
+            display: none;
+        }
+    }
+
+    &__bottom {
+        padding: 14px 24px 24px 24px;
+    }
+
+    &__bottomContent {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        border-top: 1px solid var(--color-grayScale-70);
     }
 
     &__main {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 100%;
+        padding: 14px 0px;
         overflow-x: hidden;
         overflow-y: auto;
 
         @include scrollbar_hidden;
     }
 
-    &__bottom {
-        flex: 0 0 auto;
-        min-height: 74px;
-        text-align: center;
+    &__mainGradientTop {
+        opacity: 1;
+        position: relative;
+    }
+
+    &__mainGradientTop::before {
+        position: fixed;
+        width: 100%;
+        height: 150px;
+        top: $topHeight;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0, var(--color-grayScale-80) 100%);
+        z-index: 2;
+        content: '';
+        pointer-events: none;
+    }
+
+    &__mainGradientBottom {
+        opacity: 1;
+        position: relative;
+    }
+
+    &__mainGradientBottom::before {
+        position: fixed;
+        width: 100%;
+        height: 150px;
+        bottom: $bottomHeight;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, var(--color-grayScale-80) 100%);
+        z-index: 2;
+        content: '';
+        pointer-events: none;
     }
 }

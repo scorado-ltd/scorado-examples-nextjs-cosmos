@@ -2,5 +2,8 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
     },
-    "svg.preview.background": "dark-transparent"
+    "svg.preview.background": "dark-transparent",
+    "css.customData": [
+        "./.vscode/custom-css.json"
+    ]
 }
