@@ -3,8 +3,12 @@
 .Scrollable {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     overflow-x: hidden;
+    overflow-y: auto;
 
     @include scrollbar_general;
+
+    &___scrollbarHidden {
+        @include scrollbar_hidden;
+    }
 }

@@ -73,9 +73,12 @@
         @include scrollbar_hidden;
     }
 
+    $mainGradientTransitionSpeed: 0.25s;
+
     &__mainGradientTop {
         opacity: 1;
         position: relative;
+        transition: opacity $mainGradientTransitionSpeed;
     }
 
     &__mainGradientTop::before {
@@ -92,6 +95,7 @@
     &__mainGradientBottom {
         opacity: 1;
         position: relative;
+        transition: opacity $mainGradientTransitionSpeed;
     }
 
     &__mainGradientBottom::before {

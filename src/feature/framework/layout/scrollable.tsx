@@ -1,17 +1,32 @@
 'use client';
 
-import { PropsWithChildren, useEffect, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
+import { constructClasses } from "~f/web/css";
 import styles from './scrollable.module.scss';
+
+export enum Position {
+    Top,
+    Scrolled,
+    Bottom
+}
 
 interface ScrollPosition {
     x: number;
+    lastX: number;
     y: number;
+    lastY: number;
+    position: Position;
+    hasScrolledUp: boolean;
 }
 
 export const useScroll = (elementId: string): ScrollPosition => {
     const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
         x: 0,
+        lastX: 0,
         y: 0,
+        lastY: 0,
+        position: Position.Top,
+        hasScrolledUp: false,
     });
 
     useEffect(() => {
@@ -21,11 +36,17 @@ export const useScroll = (elementId: string): ScrollPosition => {
 
         const handleScroll = () => {
             const element = getElement();
+            const isTop = element.scrollTop <= 0;
+            const isBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
 
-            setScrollPosition({
+            setScrollPosition(state => ({
                 x: element.scrollLeft,
+                lastX: state.x,
                 y: element.scrollTop,
-            });
+                lastY: state.y,
+                position: isTop ? Position.Top : isBottom ? Position.Bottom : Position.Scrolled,
+                hasScrolledUp: element.scrollTop < state.y,
+            }));
         };
 
         getElement().addEventListener("scroll", handleScroll);
@@ -38,9 +59,16 @@ export const useScroll = (elementId: string): ScrollPosition => {
     return scrollPosition;
 };
 
-export function Scrollable({ children, id }: PropsWithChildren<{ id: string }>) {
+interface ScrollableProps extends HTMLAttributes<Element> {
+    id: string,
+    scrollbar?: 'visible' | 'hidden';
+}
+
+export function Scrollable({ children, id, scrollbar, className, ...props }: ScrollableProps) {
+    const classNames = constructClasses([className ?? '', styles.Scrollable, scrollbar === 'hidden' ? styles.Scrollable___scrollbarHidden : ''])
+
     return (
-        <div id={id} className={styles.Scrollable}>
+        <div id={id} {...props} className={classNames}>
             {children}
         </div>
     )
