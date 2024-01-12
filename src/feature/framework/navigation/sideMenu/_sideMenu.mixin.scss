@@ -1,0 +1,6 @@
+@mixin sideMenu_globalVariables {
+    --sideMenu-openWidth: 340px;
+    --sideMenu-closedWidth: 78px;
+    --sideMenu-width: var(--sideMenu-openWidth);
+    --sideMenu-open: 1;
+}

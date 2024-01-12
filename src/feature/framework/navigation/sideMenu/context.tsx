@@ -18,12 +18,12 @@ export const SideMenuProvider: any = ({ children }: PropsWithChildren) => {
     const [isSideMenuOpen, setSideMenuOpen] = useState(true);
 
     function openMenu() {
-        document.documentElement.style.setProperty('--layout-sideMenu-width', 'var(--layout-sideMenu-openWidth)');
-        //document.getElementById(mainMenuId).classList.add(styles.SideMenu__primary___isOpen);
+        document.documentElement.style.setProperty('--sideMenu-width', 'var(--sideMenu-openWidth)');
+        document.documentElement.style.setProperty('--sideMenu-open', '1');
     }
     function closeMenu() {
-        document.documentElement.style.setProperty('--layout-sideMenu-width', 'var(--layout-sideMenu-closedWidth)');
-        //document.getElementById(mainMenuId).classList.remove(styles.SideMenu__primary___isOpen);
+        document.documentElement.style.setProperty('--sideMenu-width', 'var(--sideMenu-closedWidth)');
+        document.documentElement.style.setProperty('--sideMenu-open', '0');
     }
 
     function toggleMenu() {
