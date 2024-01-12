@@ -41,7 +41,7 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
         const element = getElement();
         if (element !== null) {
             console.log(element.clientWidth);
-            setSideMenuOpen(() => element.clientWidth > 78);
+            setSideMenuOpen(() => windowWidth !== undefined && windowWidth > 1365);
         }
     }, [windowWidth])
 
