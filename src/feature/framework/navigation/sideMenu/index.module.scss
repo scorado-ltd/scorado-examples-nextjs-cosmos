@@ -4,37 +4,64 @@
     $topHeight: 93px;
     $bottomHeight: 93px;
 
-    width: var(--sideMenu-width);
+    @include mediaMobile {
+        display: none;
+    }
+
+    --sideMenu-openWidth: 340px;
+    --sideMenu-closedWidth: 78px;
+    --sideMenu-width: var(--sideMenu-openWidth);
+    --sideMenu-containerWith: var(--sideMenu-openWidth);
+    --sideMenu-open: 1;
+
+    width: var(--sideMenu-containerWith);
     height: 100%;
     flex: 0 0 auto;
     transition: width 0.5s;
     border-right: 1px solid rgba($color: #D9D9D9, $alpha: 0.2);
 
     @include mediaDesktopNarrow {
+        --sideMenu-containerWith: var(--sideMenu-closedWidth);
+        --sideMenu-width: var(--sideMenu-closedWidth);
+        --sideMenu-open: 0;
+
         &::after {
+            content: '';
             position: fixed;
             top: 0;
-            left: var(--sideMenu-width);
+            left: 0;
             opacity: var(--sideMenu-open);
-            transition: left 0.5s, opacity 0.5s;
-            z-index: 999;
+            transition: opacity 0.5s;
+            z-index: calc(var(--sideMenu-open) * 2);
             width: 100%;
             height: 100%;
-            content: '';
-
             background-color: rgba($color: #19191a, $alpha: 0.8);
             backdrop-filter: blur(2px);
         }
     }
 
-    @include mediaMobile {
-        display: none;
+    &___closed {
+        --sideMenu-containerWith: var(--sideMenu-closedWidth);
+        --sideMenu-width: var(--sideMenu-closedWidth);
+        --sideMenu-open: 0;
+    }
+
+    &___open {
+        --sideMenu-width: var(--sideMenu-openWidth);
+        --sideMenu-open: 1;
     }
 
     &__layout {
+        position: relative;
         height: 100%;
         width: 100%;
         transform: translateZ(0);
+
+        @include mediaDesktopNarrow {
+            z-index: 5;
+            width: var(--sideMenu-width);
+            transition: width 0.5s;
+        }
     }
 
     &__container {

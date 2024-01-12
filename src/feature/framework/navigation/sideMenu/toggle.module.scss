@@ -15,4 +15,8 @@
     &:active {
         color: var(--color-grayScale-offWhite);
     }
+
+    &__icon {
+        rotate: calc(180deg * var(--sideMenu-open));
+    }
 }

@@ -1,11 +1,9 @@
 @import '../feature/framework/layout/layout.mixin';
 @import '../feature/framework/base.mixin';
-@import '../feature/framework/navigation/sideMenu/sideMenu.mixin';
 
 :root {
   @include color_globalVariables;
   @include text_globalVariables;
-  @include sideMenu_globalVariables;
 
   // Legacy
   --theme-primaryColour-light: #43FFB1;
