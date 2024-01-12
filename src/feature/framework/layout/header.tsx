@@ -2,10 +2,10 @@
 
 import { PropsWithChildren } from "react";
 import styles from './header.module.scss';
-import { useMainScroll } from "./mainScrollable";
+import { useMainScrollable } from "./mainScrollable";
 
 export function Header({ children }: PropsWithChildren) {
-    const { hasScrolledUp } = useMainScroll();
+    const { hasScrolledUp } = useMainScrollable();
     const visibilityClass = hasScrolledUp ? '' : styles.Header___hidden;
 
     return (

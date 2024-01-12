@@ -4,28 +4,32 @@ import { HTMLAttributes, useEffect, useState } from "react";
 import { constructClasses } from "~f/web/css";
 import styles from './scrollable.module.scss';
 
-export enum Position {
+export enum ScrollPosition {
     Top,
     Scrolled,
     Bottom
 }
 
-interface ScrollPosition {
+interface ScrollableInfo {
+    elementId: string;
     x: number;
     lastX: number;
     y: number;
     lastY: number;
-    position: Position;
+    isScrollable: boolean;
+    position: ScrollPosition;
     hasScrolledUp: boolean;
 }
 
-export const useScroll = (elementId: string): ScrollPosition => {
-    const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
+export const useScrollable = (elementId: string): ScrollableInfo => {
+    const [scrollable, setScrollable] = useState<ScrollableInfo>({
+        elementId,
         x: 0,
         lastX: 0,
         y: 0,
         lastY: 0,
-        position: Position.Top,
+        isScrollable: false,
+        position: ScrollPosition.Top,
         hasScrolledUp: false,
     });
 
@@ -34,29 +38,44 @@ export const useScroll = (elementId: string): ScrollPosition => {
             return document.getElementById(elementId)!;
         }
 
-        const handleScroll = () => {
+        const setState = () => {
             const element = getElement();
             const isTop = element.scrollTop <= 0;
             const isBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
 
-            setScrollPosition(state => ({
+            setScrollable(state => ({
+                ...state,
                 x: element.scrollLeft,
                 lastX: state.x,
                 y: element.scrollTop,
                 lastY: state.y,
-                position: isTop ? Position.Top : isBottom ? Position.Bottom : Position.Scrolled,
+                isScrollable: element.scrollHeight > element.clientHeight,
+                position: isTop ? ScrollPosition.Top : isBottom ? ScrollPosition.Bottom : ScrollPosition.Scrolled,
                 hasScrolledUp: element.scrollTop < state.y,
             }));
+        }
+
+        const handleScroll = () => {
+            setState();
         };
 
-        getElement().addEventListener("scroll", handleScroll);
+        const handleResize = () => {
+            setState();
+        }
+
+        setState();
+        const element = getElement();
+        element.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
 
         return () => {
-            getElement().removeEventListener("scroll", handleScroll);
+            const element = getElement();
+            element.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, [elementId]);
 
-    return scrollPosition;
+    return scrollable;
 };
 
 interface ScrollableProps extends HTMLAttributes<Element> {

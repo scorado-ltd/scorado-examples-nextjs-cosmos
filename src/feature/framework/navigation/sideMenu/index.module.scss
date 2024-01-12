@@ -76,7 +76,7 @@
     $mainGradientTransitionSpeed: 0.25s;
 
     &__mainGradientTop {
-        opacity: 1;
+        opacity: 0;
         position: relative;
         transition: opacity $mainGradientTransitionSpeed;
     }
@@ -93,7 +93,7 @@
     }
 
     &__mainGradientBottom {
-        opacity: 1;
+        opacity: 0;
         position: relative;
         transition: opacity $mainGradientTransitionSpeed;
     }
