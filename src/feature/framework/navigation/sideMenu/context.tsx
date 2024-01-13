@@ -23,7 +23,8 @@ interface SideMenuProviderProps extends PropsWithChildren {
 
 export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
     const [isSideMenuOpen, setSideMenuOpen] = useState<boolean | null>(null);
-    const { width: windowWidth } = useWindowSize();
+    const { width: windowWidth, lastWidth: windowLastWidth } = useWindowSize();
+    const localStorageKey = 'sco-sideMenu-open';
 
     const getElement = useCallback(() => {
         if (typeof document === 'undefined') return null;
@@ -31,17 +32,31 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
         return document.getElementById(id);
     }, []);
 
-    function toggleMenu() {
-        const isOpen = !isSideMenuOpen;
-        window.localStorage.setItem('sideMenuOpen', JSON.stringify(isOpen))
+    function transitionMenu(isOpen: boolean, setStateOnly?: boolean) {
         setSideMenuOpen(isOpen);
+        window.localStorage.setItem(localStorageKey, JSON.stringify(isOpen))
+
+        if (setStateOnly !== undefined || setStateOnly) return;
+
+        const element = getElement();
+        if (element !== null) {
+            const transition = `sco-sidemenu-${isOpen ? 'opening' : 'closing'}`;
+            element.setAttribute(transition, '');
+            element.addEventListener('transitionend', () => {
+                element.removeAttribute(transition);
+            }, { once: true });
+        }
+    }
+
+    function toggleMenu() {
+        transitionMenu(!isSideMenuOpen);
     }
 
     useEffect(() => {
         const element = getElement();
-        if (element !== null) {
-            console.log(element.clientWidth);
-            setSideMenuOpen(() => windowWidth !== undefined && windowWidth > 1365);
+        if (element !== null && windowWidth !== undefined) {
+            const windowWidthSame = windowLastWidth === windowWidth;
+            transitionMenu(windowWidth > 1365, windowWidthSame);
         }
     }, [windowWidth])
 

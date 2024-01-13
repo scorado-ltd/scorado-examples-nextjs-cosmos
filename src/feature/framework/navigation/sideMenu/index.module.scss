@@ -24,20 +24,39 @@
         --sideMenu-containerWith: var(--sideMenu-closedWidth);
         --sideMenu-width: var(--sideMenu-closedWidth);
         --sideMenu-open: 0;
+    }
 
-        &::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            opacity: var(--sideMenu-open);
-            transition: opacity 0.5s;
-            z-index: calc(var(--sideMenu-open) * 2);
-            width: 100%;
-            height: 100%;
-            background-color: rgba($color: #19191a, $alpha: 0.8);
-            backdrop-filter: blur(2px);
+    @keyframes overlay-fade-in {
+        0% {
+            opacity: 0;
         }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes overlay-fade-out {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    &__overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 2;
+        background-color: rgba($color: #19191a, $alpha: 0.8);
+        backdrop-filter: blur(2px);
     }
 
     &___closed {
@@ -49,6 +68,18 @@
     &___open {
         --sideMenu-width: var(--sideMenu-openWidth);
         --sideMenu-open: 1;
+    }
+
+    @include mediaDesktopNarrow {
+        &___open &__overlay {
+            display: block;
+            animation: overlay-fade-in 500ms forwards;
+        }
+
+        &[sco-sidemenu-closing] &__overlay {
+            display: block;
+            animation: overlay-fade-out 500ms forwards;
+        }
     }
 
     &__layout {

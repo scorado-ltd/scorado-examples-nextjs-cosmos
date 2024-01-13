@@ -4,20 +4,26 @@ import { useEffect, useState } from "react"
 
 interface WindowSize {
     width: number | undefined,
-    height: number | undefined
+    lastWidth: number | undefined,
+    height: number | undefined,
+    lastHeight: number | undefined,
 }
 export const useWindowSize = () => {
     const [windowSize, setWindowSize] = useState<WindowSize>({
+        width: undefined,
+        lastWidth: undefined,
         height: undefined,
-        width: undefined
+        lastHeight: undefined,
     })
 
     useEffect(() => {
         function handleResize() {
-            setWindowSize({
+            setWindowSize(state => ({
                 width: window.innerWidth,
-                height: window.innerHeight
-            });
+                lastWidth: state.width,
+                height: window.innerHeight,
+                lastHeight: state.height,
+            }));
         };
 
         window.addEventListener('resize', handleResize);

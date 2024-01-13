@@ -5,6 +5,7 @@ import scoradoLogoIcon from '~p/images/logos/icon.svg';
 import { SideMenuProvider } from './context';
 import styles from './index.module.scss';
 import SideMenuMainContainer from './mainContainer';
+import SideMenuOverlay from './overlay';
 import SideMenuPreRenderer from './preRenderer';
 import { SideMenuScrollable } from './scrollable';
 import { SideMenuToggle } from './toggle';
@@ -18,7 +19,12 @@ export default function SideMenu({ children }: SideMenuProps) {
 
     return (
         <SideMenuProvider id={sideMenuId}>
-            <SideMenuMainContainer id={sideMenuId} className={styles.SideMenu} closedClassName={styles.SideMenu___closed} openClassName={styles.SideMenu___open}>
+            <SideMenuMainContainer
+                id={sideMenuId}
+                className={styles.SideMenu}
+                closedClassName={styles.SideMenu___closed}
+                openClassName={styles.SideMenu___open}
+            >
                 <SideMenuPreRenderer />
                 <div className={styles.SideMenu__layout}>
                     <div className={styles.SideMenu__container}>
@@ -36,6 +42,7 @@ export default function SideMenu({ children }: SideMenuProps) {
                         </div>
                     </div>
                 </div>
+                <SideMenuOverlay className={styles.SideMenu__overlay} />
             </SideMenuMainContainer>
         </SideMenuProvider>
     )
