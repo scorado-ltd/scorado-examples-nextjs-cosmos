@@ -210,6 +210,10 @@
             &:hover {
                 color: var(--color-grayScale-offWhite);
                 cursor: pointer;
+
+                @container (max-width: 79px) {
+                    gap: 16px;
+                }
             }
         }
     }
@@ -221,8 +225,16 @@
     }
 
     &__itemLabel {
+        white-space: nowrap;
+
         @container (max-width: 79px) {
             display: none;
+
+            @media (hover: hover) {
+                .SideMenu__item:hover & {
+                    display: block;
+                }
+            }
         }
     }
 }

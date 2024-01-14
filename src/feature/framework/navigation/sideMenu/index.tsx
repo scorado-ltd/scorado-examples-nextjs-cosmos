@@ -38,12 +38,12 @@ export default function SideMenu({ children }: SideMenuProps) {
                                 <div className={styles.SideMenu__items}>
                                     <div className={styles.SideMenu__item}>
                                         <div className={styles.SideMenu__itemIcon}><DiscoverIcon /></div>
-                                        <div className={styles.SideMenu__itemLabel}>Discover</div>
+                                        <div className={styles.SideMenu__itemLabel}>Discover Long Menu Item</div>
                                     </div>
                                     <hr className={styles.SideMenu__itemsDivider} />
                                     <div className={styles.SideMenu__item}>
                                         <div className={styles.SideMenu__itemIcon}><CreateIcon /></div>
-                                        <div className={styles.SideMenu__itemLabel}>Create</div>
+                                        <div className={styles.SideMenu__itemLabel}>Create Long Menu Item</div>
                                     </div>
                                     <div className={styles.SideMenu__item}>
                                         <div className={styles.SideMenu__itemIcon}><DiscoverIcon /></div>
