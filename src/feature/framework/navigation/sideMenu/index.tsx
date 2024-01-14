@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { PropsWithChildren } from 'react';
+import { CreateIcon, DiscoverIcon } from '~f/framework/icon';
 import scoradoLogoFull from '~p/images/logos/full-light.svg';
 import scoradoLogoIcon from '~p/images/logos/icon.svg';
 import { SideMenuProvider } from './context';
@@ -33,6 +34,27 @@ export default function SideMenu({ children }: SideMenuProps) {
                             <Image src={scoradoLogoIcon} alt="Scorado Logo" height={29} className={styles.SideMenu__logoIcon} />
                         </div>
                         <SideMenuScrollable>
+                            <div className={styles.SideMenu__main}>
+                                <div className={styles.SideMenu__items}>
+                                    <div className={styles.SideMenu__item}>
+                                        <div className={styles.SideMenu__itemIcon}><DiscoverIcon /></div>
+                                        <div className={styles.SideMenu__itemLabel}>Discover</div>
+                                    </div>
+                                    <hr className={styles.SideMenu__itemsDivider} />
+                                    <div className={styles.SideMenu__item}>
+                                        <div className={styles.SideMenu__itemIcon}><CreateIcon /></div>
+                                        <div className={styles.SideMenu__itemLabel}>Create</div>
+                                    </div>
+                                    <div className={styles.SideMenu__item}>
+                                        <div className={styles.SideMenu__itemIcon}><DiscoverIcon /></div>
+                                        <div className={styles.SideMenu__itemLabel}>Discover</div>
+                                    </div>
+                                    <div className={styles.SideMenu__item}>
+                                        <div className={styles.SideMenu__itemIcon}><CreateIcon /></div>
+                                        <div className={styles.SideMenu__itemLabel}>Create</div>
+                                    </div>
+                                </div>
+                            </div>
                             {children}
                         </SideMenuScrollable>
                         <div className={styles.SideMenu__bottom}>

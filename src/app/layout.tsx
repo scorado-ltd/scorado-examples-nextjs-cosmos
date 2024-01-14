@@ -2,7 +2,6 @@ import "@fontsource/open-sans"
 import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
-import Link from "next/link"
 import { PropsWithChildren } from "react"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
@@ -29,7 +28,7 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
             <SideMenu>
-              <h4>Side Menu Children</h4>
+              {/* <h4>Side Menu Children</h4>
               <ul>
                 <li><Link href="/login" scroll={false}>Login</Link></li>
               </ul>
@@ -70,7 +69,7 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
                 <li>List Item</li>
                 <li>List Item</li>
                 <li>List Item Bottom</li>
-              </ul>
+              </ul> */}
             </SideMenu>
             <div className={styles.Main}>
               {children}
