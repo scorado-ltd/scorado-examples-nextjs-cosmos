@@ -195,6 +195,7 @@
     }
 
     &__item {
+        position: relative;
         height: 50px;
         display: grid;
         grid-template-columns: 26px 1fr;
@@ -210,10 +211,6 @@
             &:hover {
                 color: var(--color-grayScale-offWhite);
                 cursor: pointer;
-
-                @container (max-width: 79px) {
-                    gap: 16px;
-                }
             }
         }
     }
@@ -233,6 +230,10 @@
             @media (hover: hover) {
                 .SideMenu__item:hover & {
                     display: block;
+                    position: absolute;
+                    z-index: 1000;
+                    background-color: purple;
+                    left: 42px;
                 }
             }
         }
