@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import { useSideMenuContext } from "./context";
+import { useSideMenuContext } from "../context";
 import styles from './index.module.scss';
-import { useMenuItemPopOutContext } from "./menuItemPopOut";
+import { useMenuItemPopOutContext } from "./itemPopOut";
 
 export interface SideMenuItemProps {
     icon: JSX.Element;
@@ -57,9 +57,9 @@ export default function SideMenuItem({ icon, label }: SideMenuItemProps) {
     }, [menuItem, position, label, isOpen, show, hide]);
 
     return (
-        <div className={styles.SideMenu__item} ref={menuItem}>
-            <div className={styles.SideMenu__itemIcon}>{icon}</div>
-            <div className={styles.SideMenu__itemLabel}>{label}</div>
+        <div className={styles.Item} ref={menuItem}>
+            <div className={styles.Item__icon}>{icon}</div>
+            <div className={styles.Item__label}>{label}</div>
         </div>
     )
 }

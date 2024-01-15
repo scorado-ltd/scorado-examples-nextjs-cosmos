@@ -63,8 +63,8 @@ export default function SideMenuItemPopOut() {
     const { isVisible, content, x, y } = useMenuItemPopOutContext();
 
     return (
-        <div className={`${styles.SideMenu__itemPopOut} ${isVisible ? styles.SideMenu__itemPopOut___visible : ''}`} style={{ top: y, left: x }}>
-            <div className={styles.SideMenu__itemPopOutContent} sco-sidemenu-popout-content=''>{content}</div>
+        <div className={`${styles.PopOut} ${isVisible ? styles.PopOut___visible : ''}`} style={{ top: y, left: x }}>
+            <div className={styles.PopOut__content}>{content}</div>
         </div>
     )
 }

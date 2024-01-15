@@ -3,8 +3,12 @@ import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
+import { AccountIcon, CreateIcon, DiscoverIcon } from "~f/framework/icon"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
+import SideMenuItemsContainer from "~f/framework/navigation/sideMenu/item/container"
+import SideMenuDividerItem from "~f/framework/navigation/sideMenu/item/divider"
+import SideMenuLinkItem from "~f/framework/navigation/sideMenu/item/linkItem"
 import './global.scss'
 import styles from './layout.module.scss'
 
@@ -28,48 +32,12 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
         <div className={styles.RootContainer}>
           <div className={styles.AppContainer}>
             <SideMenu>
-              {/* <h4>Side Menu Children</h4>
-              <ul>
-                <li><Link href="/login" scroll={false}>Login</Link></li>
-              </ul>
-              <ul>
-                <li>List Item Top</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item</li>
-                <li>List Item Bottom</li>
-              </ul> */}
+              <SideMenuItemsContainer>
+                <SideMenuLinkItem href={'/login'} icon={<AccountIcon />} label='Login' />
+                <SideMenuDividerItem />
+                <SideMenuLinkItem href={'/'} icon={<DiscoverIcon />} label='Discover' />
+                <SideMenuLinkItem href={'/'} icon={<CreateIcon />} label='Create' />
+              </SideMenuItemsContainer>
             </SideMenu>
             <div className={styles.Main}>
               {children}

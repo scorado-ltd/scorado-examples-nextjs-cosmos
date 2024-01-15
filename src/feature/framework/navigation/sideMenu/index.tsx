@@ -1,13 +1,11 @@
 import Image from 'next/image';
 import { PropsWithChildren } from 'react';
-import { AccountIcon, CreateIcon, DiscoverIcon } from '~f/framework/icon';
 import scoradoLogoFull from '~p/images/logos/full-light.svg';
 import scoradoLogoIcon from '~p/images/logos/icon.svg';
 import { SideMenuProvider } from './context';
 import styles from './index.module.scss';
+import SideMenuItemPopOut, { MenuItemPopOutProvider } from './item/itemPopOut';
 import SideMenuMainContainer from './mainContainer';
-import SideMenuItemPopOut, { MenuItemPopOutProvider } from './menuItemPopOut';
-import SideMenuLinkItem from './menuLinkItem';
 import SideMenuOverlay from './overlay';
 import SideMenuPreRenderer from './preRenderer';
 import { SideMenuScrollable } from './scrollable';
@@ -39,14 +37,8 @@ export default function SideMenu({ children }: SideMenuProps) {
                             </div>
                             <SideMenuScrollable>
                                 <div className={styles.SideMenu__main}>
-                                    <div className={styles.SideMenu__items}>
-                                        <SideMenuLinkItem href={'/login'} icon={<AccountIcon />} label='Login' />
-                                        <hr className={styles.SideMenu__itemsDivider} />
-                                        <SideMenuLinkItem href={'/'} icon={<DiscoverIcon />} label='Discover' />
-                                        <SideMenuLinkItem href={'/'} icon={<CreateIcon />} label='Create' />
-                                    </div>
+                                    {children}
                                 </div>
-                                {children}
                             </SideMenuScrollable>
                             <div className={styles.SideMenu__bottom}>
                                 <div className={styles.SideMenu__bottomContent}>
