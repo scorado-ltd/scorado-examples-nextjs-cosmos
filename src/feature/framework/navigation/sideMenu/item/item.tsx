@@ -27,7 +27,7 @@ export default function SideMenuItem({ icon, label }: SideMenuItemProps) {
 
     useEffect(() => {
         function handleEnter() {
-            show(position.current.x + 42, position.current.y, label);
+            show(position.current.x + 66, position.current.y, label);
         }
 
         function handleLeave() {
