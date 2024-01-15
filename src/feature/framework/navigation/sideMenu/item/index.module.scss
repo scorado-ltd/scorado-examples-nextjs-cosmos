@@ -42,10 +42,11 @@
     align-items: center;
     color: var(--color-grayScale-60);
     text-decoration: none;
-    padding-left: 24px;
+    padding: 0px 24px;
 
     @container (max-width: 79px) {
         gap: 0px;
+        padding-right: 0px;
     }
 
     @media (hover: hover) {
