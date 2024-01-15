@@ -26,11 +26,11 @@ export default function SideMenuItem({ icon, label }: SideMenuItemProps) {
     }
 
     useEffect(() => {
-        function handleHoverOn() {
+        function handleEnter() {
             show(position.current.x + 42, position.current.y, label);
         }
 
-        function handleHoverOff() {
+        function handleLeave() {
             hide();
         }
 
@@ -44,14 +44,14 @@ export default function SideMenuItem({ icon, label }: SideMenuItemProps) {
         }
 
         if (element && !isOpen) {
-            element.addEventListener('mouseenter', handleHoverOn);
-            element.addEventListener('mouseleave', handleHoverOff);
+            element.addEventListener('pointerenter', handleEnter);
+            element.addEventListener('pointerleave', handleLeave);
         }
 
         return () => {
             if (element) {
-                element.removeEventListener('mouseenter', handleHoverOn);
-                element.removeEventListener('mouseleave', handleHoverOff);
+                element.removeEventListener('pointerenter', handleEnter);
+                element.removeEventListener('pointerleave', handleLeave);
             }
         }
     }, [menuItem, position, label, isOpen, show, hide]);
