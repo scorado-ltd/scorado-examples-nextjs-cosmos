@@ -20,10 +20,21 @@ export function DiscoverIcon(props: HTMLAttributes<Element>) {
 
 export function CreateIcon(props: HTMLAttributes<Element>) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none" {...props}>
             <circle cx="11" cy="11" r="8.25" stroke="currentColor" strokeWidth="1.5" />
             <path d="M11 8V14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M8 11H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
+    )
+}
+
+export function AccountIcon(props: HTMLAttributes<Element>) {
+    return (
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <circle cx="11" cy="11" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M14.1111 15V14.1112C14.1111 13.6397 13.9501 13.1875 13.6636 12.8541C13.3771 12.5207 12.9885 12.3334 12.5833 12.3334H9.52778C9.12259 12.3334 8.73399 12.5207 8.44748 12.8541C8.16096 13.1875 8 13.6397 8 14.1112V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M11 10C12.1046 10 13 9.10457 13 8C13 6.89543 12.1046 6 11 6C9.89543 6 9 6.89543 9 8C9 9.10457 9.89543 10 11 10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+
     )
 }

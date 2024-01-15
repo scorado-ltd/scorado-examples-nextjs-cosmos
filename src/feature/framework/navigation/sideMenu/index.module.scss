@@ -96,6 +96,7 @@
     }
 
     &__container {
+        position: relative;
         height: 100%;
         display: grid;
         grid-template-columns: 1fr;
@@ -194,6 +195,29 @@
         background-color: var(--color-grayScale-70);
     }
 
+    &__itemPopOut {
+        display: none;
+        position: absolute;
+        left: 66px;
+        height: 50px;
+        padding-right: 16px;
+        border-radius: 0px 12px 12px 0px;
+        z-index: 10000;
+        background-color: var(--color-grayScale-80);
+        pointer-events: none;
+
+        &___visible {
+            display: block;
+        }
+    }
+
+    &__itemPopOutContent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
     &__item {
         position: relative;
         height: 50px;
@@ -202,6 +226,7 @@
         gap: 16px;
         align-items: center;
         color: var(--color-grayScale-60);
+        text-decoration: none;
 
         @container (max-width: 79px) {
             gap: 0px;
@@ -215,6 +240,10 @@
         }
     }
 
+    &__linkItem {
+        text-decoration: none;
+    }
+
     &__itemIcon {
         justify-self: center;
         height: 26px;
@@ -226,16 +255,6 @@
 
         @container (max-width: 79px) {
             display: none;
-
-            @media (hover: hover) {
-                .SideMenu__item:hover & {
-                    display: block;
-                    position: absolute;
-                    z-index: 1000;
-                    background-color: purple;
-                    left: 42px;
-                }
-            }
         }
     }
 }
