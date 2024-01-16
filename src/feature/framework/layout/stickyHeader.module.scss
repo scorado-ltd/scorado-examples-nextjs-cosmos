@@ -1,0 +1,19 @@
+@import './layout.mixin';
+
+.Header {
+    --stickyHeader-height: 71px;
+
+    position: relative;
+    height: var(--stickyHeader-height);
+    width: 100%;
+    z-index: 2;
+    transition: transform 0.5s;
+    background-color: var(--color-grayScale-offBlack);
+
+    &___scrolled {
+        @include mediaMobile {
+            position: fixed;
+            transform: translateY(calc(-1 * var(--stickyHeader-height)));
+        }
+    }
+}

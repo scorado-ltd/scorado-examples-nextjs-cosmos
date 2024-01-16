@@ -51,7 +51,7 @@ export const useScrollable = (elementId: string): ScrollableInfo => {
                 lastY: state.y,
                 isScrollable: element.scrollHeight > element.clientHeight,
                 position: isTop ? ScrollPosition.Top : isBottom ? ScrollPosition.Bottom : ScrollPosition.Scrolled,
-                hasScrolledUp: element.scrollTop < state.y,
+                hasScrolledUp: element.scrollTop <= state.y,
             }));
         }
 
