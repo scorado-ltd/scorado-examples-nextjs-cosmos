@@ -9,6 +9,7 @@ import SideMenu from "~f/framework/navigation/sideMenu"
 import SideMenuItemsContainer from "~f/framework/navigation/sideMenu/item/container"
 import SideMenuDividerItem from "~f/framework/navigation/sideMenu/item/divider"
 import SideMenuLinkItem from "~f/framework/navigation/sideMenu/item/linkItem"
+import SideMenuSearchItem from "~f/search/sideMenu/searchItem"
 import './global.scss'
 import styles from './layout.module.scss'
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
           <div className={styles.AppContainer}>
             <SideMenu>
               <SideMenuItemsContainer>
+                <SideMenuSearchItem />
                 <SideMenuLinkItem href={'/login'} icon={<AccountIcon />} label='Login' />
                 <SideMenuDividerItem />
                 <SideMenuLinkItem href={'/'} icon={<DiscoverIcon />} label='Discover' />
@@ -41,7 +43,6 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
             </SideMenu>
             <div className={styles.Main}>
               {children}
-              {/* <RouterLogger /> */}
               {rootModal}
               <footer className={styles.Main__footer}>
                 <BottomMenu />

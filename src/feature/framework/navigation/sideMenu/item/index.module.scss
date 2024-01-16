@@ -1,3 +1,5 @@
+@import '../sideMenu.mixin';
+
 .ItemsContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -44,7 +46,7 @@
     text-decoration: none;
     padding: 0px 24px;
 
-    @container (max-width: 79px) {
+    @include sideMenuClosed {
         gap: 0px;
         padding-right: 0px;
     }
@@ -65,7 +67,7 @@
     &__label {
         white-space: nowrap;
 
-        @container (max-width: 79px) {
+        @container (max-width: 300px) {
             display: none;
         }
     }

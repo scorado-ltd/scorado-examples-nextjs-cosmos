@@ -1,4 +1,5 @@
 @import '../../layout/layout.mixin';
+@import './sideMenu.mixin';
 
 .SideMenu {
     $topHeight: 93px;
@@ -76,9 +77,11 @@
             animation: overlay-fade-in 500ms forwards;
         }
 
-        &[sco-sidemenu-closing] &__overlay {
-            display: block;
-            animation: overlay-fade-out 500ms forwards;
+        @include sideMenuClosing {
+            &__overlay {
+                display: block;
+                animation: overlay-fade-out 500ms forwards;
+            }
         }
     }
 
@@ -101,7 +104,6 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: $topHeight 1fr $bottomHeight;
-
         background-color: var(--color-grayScale-80);
     }
 
@@ -142,8 +144,6 @@
     }
 
     &__main {
-        padding: 14px 0px;
-
         container-type: inline-size;
     }
 

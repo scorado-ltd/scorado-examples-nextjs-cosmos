@@ -1,0 +1,11 @@
+@mixin sideMenuClosed {
+    @container (max-width: 300px) {
+        @content
+    }
+}
+
+@mixin sideMenuClosing {
+    [sco-sidemenu-closing] & {
+        @content
+    }
+}
