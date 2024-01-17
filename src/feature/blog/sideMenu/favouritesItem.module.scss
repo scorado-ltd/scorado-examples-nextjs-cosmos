@@ -2,21 +2,7 @@
 
 .FavouritesItem {
     height: 50px;
-    padding: 0px 24px;
     margin: 14px 0px;
-    transition: padding 0.25s;
-    color: var(--color-grayScale-offBlack);
-
-    @include sideMenuClosed {
-        padding: 0px 12px;
-    }
-
-    @media (hover: hover) {
-        &:hover &__box {
-            background-color: var(--color-grayScale-offWhite);
-            border-radius: 6px 0px 0px 6px;
-        }
-    }
 
     &__box {
         position: relative;
@@ -30,7 +16,24 @@
         justify-content: center;
         gap: 1ch;
 
+        margin: 0px 24px;
+        transition: margin 0.25s;
+        color: var(--color-grayScale-offBlack);
 
+        @include sideMenuClosed {
+            margin: 0px 12px;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+
+                //background-color: var(--color-grayScale-offWhite);
+                @include sideMenuClosed {
+                    border-radius: 6px 0px 0px 6px;
+                }
+
+            }
+        }
     }
 
     &__label {
@@ -44,8 +47,8 @@
         height: 50px;
         padding-right: 16px;
         color: var(--color-grayScale-offBlack);
-        // background-color: var(--color-green);
-        background-color: var(--color-grayScale-offWhite);
+        //background-color: var(--color-grayScale-offWhite);
+        background-color: var(--color-green);
         border-radius: 0px 6px 6px 0px;
         display: flex;
         align-items: center;

@@ -20,9 +20,10 @@ function BlogFavouritesItem({ count, ...props }: SideMenuBlogFavouritesItemRawPr
 
     return (
 
-        <SideMenuLinkItemContainer {...props}>
-            <SideMenuItemPopOutContainer popoutContent={<PopOut />} offsetLeft={62}>
-                <div className={styles.FavouritesItem}>
+
+        <div className={styles.FavouritesItem}>
+            <SideMenuLinkItemContainer {...props}>
+                <SideMenuItemPopOutContainer popoutContent={<PopOut />} offsetLeft={62}>
                     <div className={styles.FavouritesItem__box}>
                         <div className={styles.FavouritesItem__count}>
                             ❤️ {count}
@@ -31,9 +32,10 @@ function BlogFavouritesItem({ count, ...props }: SideMenuBlogFavouritesItemRawPr
                             Favourites
                         </div>
                     </div>
-                </div>
-            </SideMenuItemPopOutContainer>
-        </SideMenuLinkItemContainer>
+                </SideMenuItemPopOutContainer>
+            </SideMenuLinkItemContainer>
+        </div>
+
 
     )
 }
