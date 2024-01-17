@@ -6,6 +6,10 @@
     margin: 14px 0px;
     transition: padding 0.25s;
 
+    @include sideMenuClosed {
+        padding: 0px 12px;
+    }
+
     &__form {
         height: 100%;
     }
@@ -41,6 +45,10 @@
                 color: var(--color-grayScale-offWhite);
             }
         }
+
+        @include sideMenuClosed {
+            display: none;
+        }
     }
 
     &__button {
@@ -52,16 +60,8 @@
         background-color: transparent;
         transition: right 0.5s;
         cursor: pointer;
-    }
 
-    @include sideMenuClosed {
-        padding: 0px 12px;
-
-        &__input {
-            display: none;
-        }
-
-        &__button {
+        @include sideMenuClosed {
             right: 14px;
         }
     }

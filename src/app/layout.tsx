@@ -3,6 +3,7 @@ import "@fontsource/outfit"
 
 import type { Metadata } from 'next'
 import { PropsWithChildren } from "react"
+import SideMenuBlogFavouritesItem from "~f/blog/sideMenu/favouritesItem"
 import { AccountIcon, CreateIcon, DiscoverIcon } from "~f/framework/icon"
 import { BottomMenu } from "~f/framework/navigation/bottomMenu"
 import SideMenu from "~f/framework/navigation/sideMenu"
@@ -37,8 +38,10 @@ export default function RootLayout({ children, rootModal }: LayoutProps) {
                 <SideMenuSearchItem />
                 <SideMenuLinkItem href={'/login'} icon={<AccountIcon />} label='Login' />
                 <SideMenuDividerItem />
-                <SideMenuLinkItem href={'/'} icon={<DiscoverIcon />} label='Discover' />
+                <SideMenuLinkItem href={'/blog'} icon={<DiscoverIcon />} label='Blog' />
                 <SideMenuLinkItem href={'/'} icon={<CreateIcon />} label='Create' />
+                <SideMenuDividerItem />
+                <SideMenuBlogFavouritesItem href={'/blog/favorites'} />
               </SideMenuItemsContainer>
             </SideMenu>
             <div className={styles.Main}>
