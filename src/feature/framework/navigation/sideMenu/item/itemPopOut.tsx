@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren, createContext, useContext, useEffect, useRef, useState } from "react";
+import { PropsWithChildren, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useSideMenuContext } from "../context";
 import styles from './index.module.scss';
 
@@ -90,22 +90,24 @@ export function SideMenuItemPopOutContainer({ children, popoutContent, offsetLef
         };
     }
 
+    const handleEnter = useCallback(() => {
+        show(position.current.x + (offsetLeft ?? 0), position.current.y, popoutContent);
+    }, []);
+
+    const handleLeave = useCallback(() => {
+        hide();
+    }, []);
+
     useEffect(() => {
-        function handleEnter() {
-            show(position.current.x + (offsetLeft ?? 0), position.current.y, popoutContent);
-        }
-
-        function handleLeave() {
-            hide();
-        }
-
         const element = menuItem.current;
         if (element !== null) {
             const bounding = element.getBoundingClientRect();
-            position.current = {
-                x: bounding.x,
-                y: bounding.y
-            };
+            if (position.current.x !== bounding.x || position.current.y !== bounding.y) {
+                position.current = {
+                    x: bounding.x,
+                    y: bounding.y
+                };
+            }
         }
 
         if (element && !isOpen) {
@@ -122,7 +124,7 @@ export function SideMenuItemPopOutContainer({ children, popoutContent, offsetLef
                 element.removeEventListener('pointerleave', handleLeave);
             }
         }
-    }, [menuItem, position, popoutContent, isOpen, show, hide]);
+    }, [menuItem, position, isOpen, handleEnter, handleLeave]);
 
     return (
         <div className={styles.PopOutContainer} ref={menuItem}>
