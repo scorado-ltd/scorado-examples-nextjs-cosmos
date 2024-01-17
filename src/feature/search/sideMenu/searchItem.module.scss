@@ -51,6 +51,7 @@
         color: var(--color-grayScale-60);
         background-color: transparent;
         transition: right 0.5s;
+        cursor: pointer;
     }
 
     @include sideMenuClosed {

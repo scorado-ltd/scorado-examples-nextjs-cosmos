@@ -3,15 +3,24 @@
 import { PropsWithChildren, createContext, useCallback, useContext, useEffect, useState } from "react";
 import { useWindowSize } from "~f/web/windowSize";
 
+export enum SideMenuState {
+    Open,
+    Opening,
+    Closing,
+    Closed
+}
+
 interface SideMenuContextProps {
     elementId: string;
     isOpen: boolean | null;
+    state: SideMenuState | null;
     toggleMenu: () => void;
 }
 
 const defaultState: SideMenuContextProps = {
     elementId: '',
     isOpen: false,
+    state: null,
     toggleMenu: () => { }
 }
 
@@ -23,6 +32,7 @@ interface SideMenuProviderProps extends PropsWithChildren {
 
 export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
     const [isSideMenuOpen, setSideMenuOpen] = useState<boolean | null>(null);
+    const [sideMenuState, setSideMenuState] = useState<SideMenuState | null>(null);
     const { width: windowWidth, lastWidth: windowLastWidth } = useWindowSize();
     const localStorageKey = 'sco-sideMenu-open';
 
@@ -34,9 +44,10 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
 
     function transitionMenu(isOpen: boolean, setStateOnly?: boolean) {
         setSideMenuOpen(isOpen);
+        setSideMenuState(isOpen ? SideMenuState.Opening : SideMenuState.Closing);
         window.localStorage.setItem(localStorageKey, JSON.stringify(isOpen))
 
-        if (setStateOnly !== undefined || setStateOnly) return;
+        if (setStateOnly) return;
 
         const element = getElement();
         if (element !== null) {
@@ -44,6 +55,7 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
             element.setAttribute(transition, '');
             element.addEventListener('transitionend', () => {
                 element.removeAttribute(transition);
+                setSideMenuState(isOpen ? SideMenuState.Open : SideMenuState.Closed);
             }, { once: true });
         }
     }
@@ -64,6 +76,7 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
         <SideMenuContext.Provider value={{
             elementId: id,
             isOpen: isSideMenuOpen,
+            state: sideMenuState,
             toggleMenu: toggleMenu
         }}>
             {children}
