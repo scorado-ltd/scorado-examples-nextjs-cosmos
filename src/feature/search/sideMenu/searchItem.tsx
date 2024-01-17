@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "~f/framework/icon";
 import { SideMenuState, useSideMenuContext } from "~f/framework/navigation/sideMenu/context";
@@ -8,17 +9,18 @@ import { SideMenuItemPopOutContainer } from "~f/framework/navigation/sideMenu/it
 import styles from "./searchItem.module.scss";
 
 export default function SideMenuSearchItem() {
+    const router = useRouter();
     const { isOpen, state, toggleMenu } = useSideMenuContext();
     const [shouldFocus, setShouldFocus] = useState(false);
+    const formRef = useRef<HTMLFormElement>(null);
     const queryInputRef = useRef<HTMLInputElement>(null);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
         const queryInput = queryInputRef.current;
-        if (queryInput === null) return;
+        if (queryInput === null || formRef.current === null) return;
 
         if (queryInput.value.length === 0 || !isOpen) {
-            e.preventDefault();
-
             if (!isOpen) {
                 toggleMenu();
                 setShouldFocus(true);
@@ -26,6 +28,10 @@ export default function SideMenuSearchItem() {
             else {
                 queryInput.focus();
             }
+        }
+        else {
+            const params = new URLSearchParams([[queryInput.name, queryInput.value]]);
+            router.push(`${formRef.current.action}?${params}`);
         }
     }
 
@@ -44,7 +50,7 @@ export default function SideMenuSearchItem() {
     return (
         <div className={styles.SearchItem}>
             <SideMenuItemPopOutContainer popoutContent={<PopOutContent>Search</PopOutContent>} offsetLeft={66}>
-                <form action="/search" method="GET" className={styles.SearchItem__form} onSubmit={handleSubmit}>
+                <form action="/search" method="GET" className={styles.SearchItem__form} onSubmit={handleSubmit} ref={formRef}>
                     <div className={styles.SearchItem__box}>
                         <input className={styles.SearchItem__input} type="text" placeholder="Search" name="q" ref={queryInputRef} />
                         <button className={styles.SearchItem__button} type="submit">
