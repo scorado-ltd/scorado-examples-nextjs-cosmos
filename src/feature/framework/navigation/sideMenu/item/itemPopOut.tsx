@@ -1,6 +1,7 @@
 'use client';
 
-import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { PropsWithChildren, createContext, useContext, useEffect, useRef, useState } from "react";
+import { useSideMenuContext } from "../context";
 import styles from './index.module.scss';
 
 interface MenuItemPopOut {
@@ -64,7 +65,65 @@ export default function SideMenuItemPopOut() {
 
     return (
         <div className={`${styles.PopOut} ${isVisible ? styles.PopOut___visible : ''}`} style={{ top: y, left: x }}>
-            <div className={styles.PopOut__content}>{content}</div>
+            {content}
+        </div>
+    )
+}
+
+interface SideMenuItemPopOutContainer extends PropsWithChildren {
+    popoutContent: React.ReactNode;
+    offsetLeft?: number;
+}
+
+export function SideMenuItemPopOutContainer({ children, popoutContent, offsetLeft }: SideMenuItemPopOutContainer) {
+    const { isOpen } = useSideMenuContext();
+    const { show, hide } = useMenuItemPopOutContext();
+    const menuItem = useRef<HTMLDivElement>(null);
+    const position = useRef({ x: 0, y: 0 });
+
+    if (menuItem.current !== null) {
+        const element = menuItem.current;
+        const bounding = element.getBoundingClientRect();
+        position.current = {
+            x: bounding.x,
+            y: bounding.y
+        };
+    }
+
+    useEffect(() => {
+        function handleEnter() {
+            show(position.current.x + (offsetLeft ?? 0), position.current.y, popoutContent);
+        }
+
+        function handleLeave() {
+            hide();
+        }
+
+        const element = menuItem.current;
+        if (element !== null) {
+            const bounding = element.getBoundingClientRect();
+            position.current = {
+                x: bounding.x,
+                y: bounding.y
+            };
+        }
+
+        if (element && !isOpen) {
+            element.addEventListener('pointerenter', handleEnter);
+            element.addEventListener('pointerleave', handleLeave);
+        }
+
+        return () => {
+            if (element) {
+                element.removeEventListener('pointerenter', handleEnter);
+                element.removeEventListener('pointerleave', handleLeave);
+            }
+        }
+    }, [menuItem, position, popoutContent, isOpen, show, hide]);
+
+    return (
+        <div ref={menuItem}>
+            {children}
         </div>
     )
 }

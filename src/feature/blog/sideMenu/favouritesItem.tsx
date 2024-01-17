@@ -1,5 +1,6 @@
 import { LinkProps } from "next/link";
 import { Suspense } from "react";
+import { SideMenuItemPopOutContainer } from "~f/framework/navigation/sideMenu/item/itemPopOut";
 import { SideMenuLinkItemContainer } from "~f/framework/navigation/sideMenu/item/linkItem";
 import { getBlogFavorites } from "../blogApi";
 import styles from './favouritesItem.module.scss';
@@ -9,12 +10,34 @@ export interface SideMenuBlogFavouritesItemRawProps extends LinkProps {
 }
 
 function BlogFavouritesItem({ count, ...props }: SideMenuBlogFavouritesItemRawProps) {
-    return (
-        <SideMenuLinkItemContainer {...props}>
-            <div className={styles.FavouritesItem}>
-                <div className={styles.FavouritesItem__box}>❤️ {count}</div>
+    function PopOut() {
+        return (
+            <div className={styles.FavouritesItem__popOut}>
+                Favourites
+                {/* <div className={styles.FavouritesItem__box}>
+                    
+                </div> */}
             </div>
+        )
+    }
+
+    return (
+
+        <SideMenuLinkItemContainer {...props}>
+            <SideMenuItemPopOutContainer popoutContent={<PopOut />} offsetLeft={62}>
+                <div className={styles.FavouritesItem}>
+                    <div className={styles.FavouritesItem__box}>
+                        <div className={styles.FavouritesItem__count}>
+                            ❤️ {count}
+                        </div>
+                        <div className={styles.FavouritesItem__label}>
+                            Favourites
+                        </div>
+                    </div>
+                </div>
+            </SideMenuItemPopOutContainer>
         </SideMenuLinkItemContainer>
+
     )
 }
 

@@ -12,26 +12,20 @@
     background-color: var(--color-grayScale-70);
 }
 
+.PopOutContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 .PopOut {
     display: none;
     position: absolute;
-    left: 66px;
-    height: 50px;
-    padding-right: 16px;
-    border-radius: 0px 12px 12px 0px;
-    z-index: 10000;
-    background-color: var(--color-grayScale-80);
+    z-index: 5;
     pointer-events: none;
 
     &___visible {
         display: block;
-    }
-
-    &__content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
     }
 }
 
@@ -70,6 +64,16 @@
         @container (max-width: 300px) {
             display: none;
         }
+    }
+
+    &__popOut {
+        width: 100%;
+        height: 50px;
+        padding-right: 16px;
+        background-color: var(--color-grayScale-80);
+        border-radius: 0px 12px 12px 0px;
+        display: flex;
+        align-items: center;
     }
 }
 
