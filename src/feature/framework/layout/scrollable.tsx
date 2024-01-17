@@ -65,13 +65,17 @@ export const useScrollable = (elementId: string): ScrollableInfo => {
 
         setState();
         const element = getElement();
-        element.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", handleResize);
+        if (element !== null && window !== null) {
+            element.addEventListener("scroll", handleScroll);
+            window.addEventListener("resize", handleResize);
+        }
 
         return () => {
             const element = getElement();
-            element.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("resize", handleResize);
+            if (element !== null && window !== null) {
+                element.removeEventListener("scroll", handleScroll);
+                window.removeEventListener("resize", handleResize);
+            }
         };
     }, [elementId]);
 

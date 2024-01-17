@@ -28,7 +28,7 @@ async function FavoritesList() {
         <>
             {favorites.length > 0 ? favorites.map(blog => (
                 <div key={blog.id}>
-                    <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
+                    <Link href={`/blog/post/${blog.id}`}>{blog.title}</Link>
                 </div>
             )) : (
                 <div>No favorites found</div>

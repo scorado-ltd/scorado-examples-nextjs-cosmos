@@ -19,6 +19,8 @@ export default async function Page({ params }: PageProps) {
 
     if (!blog) return null;
 
+    console.log(blog);
+
     const updatedAtIso = formatISO(blog.updatedAt);
     const updatedAtFormatted = format(blog.updatedAt, 'do LLL yyyy');
     const profileImageUrl = blog.profileImageId ? getProfileImagePath(blog.profileImageId) : null;
