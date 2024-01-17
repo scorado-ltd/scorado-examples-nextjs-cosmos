@@ -2,16 +2,16 @@
 
 .SearchItem {
     height: 50px;
-    padding: 0px 24px;
     margin: 14px 0px;
-    transition: padding 0.25s;
-
-    @include sideMenuClosed {
-        padding: 0px 12px;
-    }
 
     &__form {
         height: 100%;
+        padding: 0px 24px;
+        transition: padding 0.25s;
+
+        @include sideMenuClosed {
+            padding: 0px 12px;
+        }
     }
 
     &__box {
@@ -19,10 +19,22 @@
         height: 100%;
         background-color: var(--color-grayScale-offBlack);
         border-radius: 6px;
+        transition: background-color 0.5s;
 
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+
+        @include sideMenuClosed {
+            background-color: transparent;
+        }
+
+        @media (hover: hover) {
+
+            &:hover .SearchItem__button {
+                color: var(--color-grayScale-offWhite);
+            }
+        }
     }
 
     &__input {

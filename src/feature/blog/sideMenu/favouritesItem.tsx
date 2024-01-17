@@ -14,9 +14,6 @@ function BlogFavouritesItem({ count, ...props }: SideMenuBlogFavouritesItemRawPr
         return (
             <div className={styles.FavouritesItem__popOut}>
                 Favourites
-                {/* <div className={styles.FavouritesItem__box}>
-                    
-                </div> */}
             </div>
         )
     }

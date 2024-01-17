@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "~f/framework/icon";
 import { SideMenuState, useSideMenuContext } from "~f/framework/navigation/sideMenu/context";
+import { PopOutContent } from "~f/framework/navigation/sideMenu/item/item";
+import { SideMenuItemPopOutContainer } from "~f/framework/navigation/sideMenu/item/itemPopOut";
 import styles from "./searchItem.module.scss";
 
 export default function SideMenuSearchItem() {
@@ -41,14 +43,16 @@ export default function SideMenuSearchItem() {
 
     return (
         <div className={styles.SearchItem}>
-            <form action="/search" method="GET" className={styles.SearchItem__form} onSubmit={handleSubmit}>
-                <div className={styles.SearchItem__box}>
-                    <input className={styles.SearchItem__input} type="text" placeholder="Search" name="q" ref={queryInputRef} />
-                    <button className={styles.SearchItem__button} type="submit">
-                        <MagnifyingGlassIcon />
-                    </button>
-                </div>
-            </form>
+            <SideMenuItemPopOutContainer popoutContent={<PopOutContent>Search</PopOutContent>} offsetLeft={66}>
+                <form action="/search" method="GET" className={styles.SearchItem__form} onSubmit={handleSubmit}>
+                    <div className={styles.SearchItem__box}>
+                        <input className={styles.SearchItem__input} type="text" placeholder="Search" name="q" ref={queryInputRef} />
+                        <button className={styles.SearchItem__button} type="submit">
+                            <MagnifyingGlassIcon />
+                        </button>
+                    </div>
+                </form>
+            </SideMenuItemPopOutContainer>
         </div>
     )
 }

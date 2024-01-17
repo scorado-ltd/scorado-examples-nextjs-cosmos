@@ -112,6 +112,9 @@ export function SideMenuItemPopOutContainer({ children, popoutContent, offsetLef
             element.addEventListener('pointerenter', handleEnter);
             element.addEventListener('pointerleave', handleLeave);
         }
+        else if (isOpen) {
+            handleLeave();
+        }
 
         return () => {
             if (element) {
@@ -122,7 +125,7 @@ export function SideMenuItemPopOutContainer({ children, popoutContent, offsetLef
     }, [menuItem, position, popoutContent, isOpen, show, hide]);
 
     return (
-        <div ref={menuItem}>
+        <div className={styles.PopOutContainer} ref={menuItem}>
             {children}
         </div>
     )
