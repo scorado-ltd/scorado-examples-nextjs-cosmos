@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from "next/navigation";
 import { PropsWithChildren, createContext, useCallback, useContext, useEffect, useState } from "react";
 import { useWindowSize } from "~f/web/windowSize";
 
@@ -31,6 +32,8 @@ interface SideMenuProviderProps extends PropsWithChildren {
 }
 
 export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
+    const pathname = usePathname();
+    const [lastPathname, setLastPathname] = useState<string | null>(pathname);
     const [isSideMenuOpen, setSideMenuOpen] = useState<boolean | null>(null);
     const [sideMenuState, setSideMenuState] = useState<SideMenuState | null>(null);
     const { width: windowWidth, lastWidth: windowLastWidth } = useWindowSize();
@@ -70,7 +73,22 @@ export const SideMenuProvider = ({ id, children }: SideMenuProviderProps) => {
             const windowWidthSame = windowLastWidth === windowWidth;
             transitionMenu(windowWidth > 1365, windowWidthSame);
         }
-    }, [windowWidth])
+    }, [windowWidth, windowLastWidth])
+
+    useEffect(() => {
+        const element = getElement();
+
+        if (element !== null && windowWidth !== undefined &&
+            lastPathname &&
+            pathname !== lastPathname &&
+            isSideMenuOpen &&
+            windowWidth < 1365 &&
+            windowLastWidth === windowWidth) {
+
+            transitionMenu(false);
+            setLastPathname(pathname);
+        }
+    }, [pathname, lastPathname, isSideMenuOpen, windowWidth, windowLastWidth])
 
     return (
         <SideMenuContext.Provider value={{
