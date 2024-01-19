@@ -1,15 +1,36 @@
 @import 'base.mixin';
 
 .Heading1 {
-    text-align: center;
-    margin: 0;
-
-    &___hasThemedBorder {
-        @include themedBorder;
-    }
+    @include fontWeight_medium;
+    font-size: 3.125rem;
+    line-height: 1em;
+    letter-spacing: -0.04em;
 }
 
 .Heading2 {
-    text-align: center;
-    margin: 0;
+    @include fontWeight_medium;
+    font-size: 2.5rem;
+    line-height: 1em;
+    letter-spacing: -0.04em;
+}
+
+.Heading3{
+    @include fontWeight_medium;
+    font-size: 1.625rem;
+    line-height: 1em;
+    letter-spacing: -0.02em;
+}
+
+.Heading4{
+    @include fontWeight_medium;
+    font-size: 1.125rem;
+    line-height: 1em;
+    letter-spacing: -0.02em;
+}
+
+.Heading_Section{
+    @include fontWeight_medium;
+    font-size: 0.6875rem;
+    line-height: 1.27em;
+    letter-spacing: 0;
 }
