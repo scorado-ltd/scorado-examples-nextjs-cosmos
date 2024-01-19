@@ -2,17 +2,20 @@
 
 import { useRouter } from "next/navigation";
 import React, { MouseEventHandler, PropsWithChildren, useCallback, useEffect, useRef } from 'react';
+import { constructClasses } from "~f/web/css";
 import { PrimaryButton } from "../button";
 import { Heading2 } from '../heading';
+import BackgroundContainer from "../layout/backgroundContainer";
 import styles from './index.module.scss';
 
 interface ModalProps extends PropsWithChildren {
     header?: string | React.ReactNode
     footer?: React.ReactNode
+    background?: React.ReactNode,
     onClose?: () => void
 }
 
-export default function Modal({ children, header, footer, onClose }: ModalProps) {
+export default function Modal({ children, header, footer, background, onClose }: ModalProps) {
     const overlay = useRef(null);
 
     const handleClose = useCallback(() => {
@@ -36,7 +39,8 @@ export default function Modal({ children, header, footer, onClose }: ModalProps)
 
     return (
         <div ref={overlay} className={styles.Modal} onClick={handleClick}>
-            <div className={styles.Modal__container}>
+            <div className={constructClasses([styles.Modal__container, background ? styles.Modal__container___noBackground : ''])}>
+                {background && <BackgroundContainer><div className={styles.Modal__background}>{background}</div></BackgroundContainer>}
                 <div className={styles.Modal__header}>
                     {header &&
                         <div className={styles.Modal__headerContent}>
