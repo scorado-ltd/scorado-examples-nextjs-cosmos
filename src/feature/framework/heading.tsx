@@ -35,7 +35,7 @@ export function Heading4({ children }: PropsWithChildren) {
 
 export function HeadingSection({ children }: PropsWithChildren) {
     return (
-        <section className={`${styles.Heading_Section}`}>
+        <section className={`${styles.HeadingSection}`}>
             {children}
         </section>
     )
