@@ -31,53 +31,21 @@ ul {
 // Base
 html,
 body {
+  @include text_normal;
   font-family: var(--font-text);
-  font-weight: 400;
   color: var(--color-grayScale-offWhite);
-
   background-color: var(--color-grayScale-offBlack);
-
+  
   overflow: hidden;
   height: 100%;
   width: 100%;
 }
 
-// Text
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  line-height: 1em;
-
-  margin-bottom: 8px;
-}
-
-h1 {
-  @include text_heading1;
-}
-
-h2 {
-  @include text_heading2;
-}
-
-h3 {
-  @include text_heading3;
-}
-
-h4 {
-  @include text_heading4;
-}
-
 p {
-  @include text_normal;
-
   margin: 0;
   margin-bottom: 24px;
 }
+
 
 // Links
 a {

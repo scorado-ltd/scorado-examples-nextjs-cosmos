@@ -23,35 +23,19 @@
     --font-text: "Outfit";
 }
 
-@mixin text_heading1 {
-    font-size: 3.125rem;
-    letter-spacing: -0.04em;
+@mixin fontWeight_medium{
+    font-weight: 500;
 }
 
-@mixin text_heading2 {
-    font-size: 2.5rem;
-    letter-spacing: -0.04em;
-}
-
-@mixin text_heading3 {
-    font-size: 1.625rem;
-    letter-spacing: -0.02em;
-}
-
-@mixin text_heading4 {
-    font-size: 1.125rem;
-    letter-spacing: -0.02em;
-}
-
-@mixin text_headingSection {
-    font-size: 0.6875rem;
-    line-height: 1.27em;
-    letter-spacing: 0;
+@mixin fontWeight_regular{
+    font-weight: 400;
 }
 
 @mixin text_normal {
+    @include fontWeight_regular;
+    font-size: 1rem;
     line-height: 1.125em;
-    letter-spacing: 0;
+    letter-spacing: 0em;
 }
 
 @mixin text_small {
