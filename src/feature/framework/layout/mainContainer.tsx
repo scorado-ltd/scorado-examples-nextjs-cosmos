@@ -4,13 +4,13 @@ import { MainScrollable } from "./mainScrollable";
 
 export function MainContainer({ children }: PropsWithChildren) {
     return (
-        <div className={styles.MainContainer__container}>
+        <div className={styles.MainContainer}>
             <MainScrollable>
-                <main className={styles.MainContainer__contentContainer}>
-                    <div className={styles.MainContainer__content}>
+                <div className={styles.MainContainer__outer}>
+                    <div className={styles.MainContainer__inner}>
                         {children}
                     </div>
-                </main>
+                </div>
             </MainScrollable>
         </div>
     )

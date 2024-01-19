@@ -1,15 +1,13 @@
 @import './layout.mixin';
 
 .MainContainer {
-    &__container {
-        flex: 1;
-        height: 100%;
-        overflow: hidden;
-        z-index: 1;
-        direction: ltr;
-    }
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    direction: ltr;
 
-    &__contentContainer {
+    &__outer {
         width: 100%;
         padding-left: 20px;
         padding-right: 20px;
@@ -23,7 +21,7 @@
         }
     }
 
-    &__content {
+    &__inner {
         max-width: 1060px;
         width: 100%;
 
